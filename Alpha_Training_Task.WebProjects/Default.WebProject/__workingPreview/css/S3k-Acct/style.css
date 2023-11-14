@@ -1,0 +1,4761 @@
+@keyframes press-pulse{
+from {
+display: block;
+box-shadow: inset 0px 0px 10px 20px rgba(255, 255, 255, 0.3);
+}
+to {
+display: none;
+box-shadow: inset 0px 0px 0px 0px  transparent;
+}
+}
+html {
+-webkit-tap-highlight-color: transparent;
+-webkit-user-select: none;
+}
+button::-moz-focus-inner {
+border-width: 0;
+padding: 0;
+}
+/* icons */
+.icon {
+vertical-align: middle;
+width: 26px;
+height: 26px;
+fill: #373737;
+stroke: #373737;
+}
+.iconButton {
+padding: 9px;
+cursor: pointer !important;
+}
+.iconDisabled {
+opacity: .25;
+}
+.iconConfirm {
+fill: #4caf50;
+stroke: #4caf50;
+}
+.iconDeny {
+fill: #fb4a4a;
+stroke: #fb4a4a;
+}
+.compact .icon {
+margin: -2px;
+width: 22px;
+height: 22px;
+}
+.compact .iconButton {
+padding: 5px;
+}
+/* main */
+.page {
+color: #373737;
+background: #fff;
+font: 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+.page.compact, .page .compact {
+font-size: 14px;
+}
+.heading {
+color: #373737;
+font-size: 125%;
+}
+.highlight {
+color: #c0b283;
+}
+.link {
+text-decoration: none;
+color: #a79344;
+}
+.link .icon {
+fill: #a79344;
+stroke: #a79344;
+}
+.link:hover {
+text-decoration: underline;
+cursor: pointer;
+}
+.group {
+border: 1px solid #d9d9d9;
+padding: 6px;
+border-radius: 4px;
+}
+.groupLabel {
+color: #909090;
+font-size: 12px;
+}
+.lock {
+background: rgba(0, 0, 0, 0.1);
+}
+.compact .groupLabel {
+font-size: 12px;
+}
+/* panels */
+.panelHeader {
+color: #373737;
+background: #fff;
+line-height: 44px;
+}
+.panelHeaderAlt {
+color: #373737;
+background: #f2f2f2;
+line-height: 44px;
+}
+.panelHeaderContrast {
+background: #fff;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d9d9d9;
+line-height: 44px;
+}
+.panelBody {
+background: #fff;
+}
+.panelBodyShadow:before, .panelBodyShadow:after {
+background: rgba(0, 0, 0, 0.05);
+display: block;
+position: absolute;
+top: 0px;
+left: 0px;
+right: 0px;
+height: 4px;
+content: "";
+}
+.panelBodyShadow:after {
+height: 2px;
+}
+.panelFooter {
+color: #373737;
+background: #fff;
+line-height: 44px;
+}
+.panelFooterAlt {
+color: #373737;
+background: #f2f2f2;
+line-height: 44px;
+}
+.panelFooterContrast {
+background: #fff;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #d9d9d9;
+line-height: 44px;
+}
+.panelHeader .icon, .panelHeaderAlt .icon, .panelFooter .icon, .panelFooterAlt .icon {
+fill: #373737;
+stroke: #373737;
+}
+.panelNav > .panel:before {
+border: 1px solid rgba(128, 128, 128, 0.2);
+display: block;
+position: absolute;
+top: -1px;
+left: -1px;
+right: -1px;
+bottom: -1px;
+content: '';
+pointer-events: none;
+}
+.panelDockBefore, .panelDockAfter {
+background: #f7f7f7;
+}
+.panelLTR > .panel:after {
+background: rgba(128, 128, 128, 0.2);
+display: block;
+position: absolute;
+top: 0px;
+left: -1px;
+bottom: 0px;
+width: 1px;
+content: '';
+}
+.panelRTL > .panel:after {
+background: rgba(128, 128, 128, 0.2);
+display: block;
+position: absolute;
+top: 0px;
+right: -1px;
+bottom: 0px;
+width: 1px;
+content: '';
+}
+.panelLTR > .panelDockAfter:after, .panelRTL > .panelDockBefore:after {
+left: 0px !important;
+right: auto !important;
+}
+.panelLTR > .panelDockBefore:after, .panelRTL > .panelDockAfter:after {
+left: auto !important;
+right: 0px !important;
+}
+.panelTTB > .panel:after {
+background: rgba(128, 128, 128, 0.2);
+display: block;
+position: absolute;
+top: -1px;
+left: 0px;
+right: 0px;
+height: 1px;
+content: '';
+}
+.panelBTT > .panel:after {
+background: rgba(128, 128, 128, 0.2);
+display: block;
+position: absolute;
+left: 0px;
+right: 0px;
+bottom: -1px;
+height: 1px;
+content: '';
+}
+.panelTTB > .panelDockAfter:after, .panelBTT > .panelDockBefore:after {
+top: 0px !important;
+bottom: auto !important;
+}
+.panelBTT > .panelDockAfter:after, .panelTTB > .panelDockBefore:after {
+top: auto !important;
+bottom: 0px !important;
+}
+.panelDockOverlay {
+box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+}
+.panelDockBefore, .panelDockAfter {
+box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+.panelDockBefore .panelBody, .panelDockAfter .panelBody {
+background: #f7f7f7;
+}
+.panelNavInd {
+background: #ebebeb;
+font-size: 0px;
+border: 1px solid #d9d9d9;
+margin: 3px;
+display: inline-block;
+width: 6px;
+height: 6px;
+border-radius: 4px;
+}
+.panelNavIndSel {
+background: #d1c7a5;
+border-color: #c0b283;
+}
+.compact .panelHeader, .compact .panelHeaderAlt, .compact .panelHeaderContrast, .compact .panelFooter, .compact .panelFooterAlt, .compact .panelFooterContrast {
+line-height: 28px;
+}
+/*	control bar */
+.ctrlBarHorz > div > div {
+line-height: 44px;
+}
+.ctrlBarVert > div > div {
+min-width: 44px;
+}
+.ctrlBarSepHorz {
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: rgba(128, 128, 128, 0.2);
+margin: 2px;
+width: 0px;
+}
+.ctrlBarSepVert {
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: rgba(128, 128, 128, 0.2);
+margin: 2px;
+height: 0px;
+}
+.ctrlBarDis {
+color: #373737;
+background: rgba(242, 242, 242, 0.95);
+}
+.ctrlBarDisContrast {
+background: rgba(255, 255, 255, 0.95);
+}
+.ctrlBarDisExpandT, .ctrlBarDisExpandB .ctrlBarDis, .ctrlBarDisExpandB .ctrlBarDisContrast, .ctrlBarDisExtendB .ctrlBarDisContrast {
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: rgba(128, 128, 128, 0.2);
+}
+.ctrlBarDisExpandT .ctrlBarDis, .ctrlBarDisExpandT .ctrlBarDisContrast, .ctrlBarDisExpandB, .ctrlBarDisExtendT .ctrlBarDisContrast {
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: rgba(128, 128, 128, 0.2);
+}
+.ctrlBarDisExpandL, .ctrlBarDisExpandR .ctrlBarDis, .ctrlBarDisExpandR .ctrlBarDisContrast, .ctrlBarDisExtendR .ctrlBarDisContrast {
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: rgba(128, 128, 128, 0.2);
+}
+.ctrlBarDisExpandL .ctrlBarDis, .ctrlBarDisExpandL .ctrlBarDisContrast, .ctrlBarDisExpandR, .ctrlBarDisExtendL .ctrlBarDisContrast {
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: rgba(128, 128, 128, 0.2);
+}
+.compact .ctrlBarHorz > div > div {
+line-height: 28px;
+}
+.compact .ctrlBarVert > div > div {
+min-width: 28px;
+}
+/* accordion */
+.accordion {
+font-size: 14px;
+padding: 0px;
+margin-bottom: -9px;
+}
+.accordion .accordionTitle, .accordion .accordionTitleSelected, .accordion .accordionTitleDisabled {
+padding-right: 41px;
+}
+.accordion .accordionTitle:before, .accordion .accordionTitleDisabled:before {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #909090;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #909090;
+margin-top: -6px;
+margin-right: 4px;
+display: inline-block;
+position: absolute;
+top: 50%;
+right: 9px;
+width: 9px;
+height: 9px;
+border-radius: 2px;
+content: '';
+-webkit-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+.accordion .accordionTitle:hover:before {
+border-color: #909090;
+}
+.accordion .accordionTitleDisabled:before {
+border-color: #cbcbcb;
+}
+.accordion .accordionTitleSelected:before {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #fff;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #fff;
+margin-top: -6px;
+margin-right: 4px;
+display: inline-block;
+position: absolute;
+top: 50%;
+right: 9px;
+width: 9px;
+height: 9px;
+border-radius: 2px;
+content: '';
+-webkit-transform: rotate(135deg);
+transform: rotate(135deg);
+}
+.accordionTitle, .accordionTitleSelected, .accordionTitleDisabled {
+text-decoration: none;
+color: #909090;
+background: #373737;
+font-weight: normal;
+display: block;
+position: relative;
+line-height: 35px;
+}
+.accordionTitle .iconButton, .accordionTitleSelected .iconButton, .accordionTitleDisabled .iconButton {
+padding: 0px;
+}
+.accordionTitleSelected, .accordionTitle:hover {
+background-color: #515151;
+transition: background-color 0.4s;
+}
+.accordionTitleSelected {
+color: #fff;
+background-color: #6A6A6A;
+font-weight: bold;
+}
+.accordionTitleDisabled {
+color: #cbcbcb;
+}
+.accordionPane {
+color: #373737;
+background: #fafafa;
+padding: 9px;
+margin-top: -1px;
+}
+.accordionInd .accordionTitle, .accordionInd .accordionTitleSelected, .accordionInd .accordionTitleDisabled {
+padding-left: 41px;
+}
+.accordionInd .accordionTitle:before, .accordionInd .accordionTitleDisabled:before {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #909090;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #909090;
+margin-top: -6px;
+margin-right: 4px;
+display: inline-block;
+position: absolute;
+top: 50%;
+right: 9px;
+width: 9px;
+height: 9px;
+border-radius: 2px;
+content: '';
+-webkit-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+.accordionInd .accordionTitle:hover:before {
+border-color: #909090;
+transition: 0.3s;
+}
+.accordionInd .accordionTitleDisabled:before {
+border-color: #cbcbcb;
+}
+.accordionInd .accordionTitleSelected:before {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #fff;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #fff;
+margin-top: -6px;
+margin-right: 4px;
+display: inline-block;
+position: absolute;
+top: 50%;
+right: 9px;
+width: 9px;
+height: 9px;
+border-radius: 2px;
+content: '';
+-webkit-transform: rotate(135deg);
+transform: rotate(135deg);
+}
+.compact .accordionTitle, .compact .accordionTitleSelected, .compact .accordionTitleDisabled {
+padding: 5px 7px;
+}
+.compact .accordionInd .accordionTitle, .compact .accordionInd .accordionTitleSelected, .compact .accordionInd .accordionTitleDisabled {
+padding-left: 25px;
+}
+.compact .accordionTitle:before, .compact .accordionTitleSelected:before, .compact .accordionTitleDisabled:before {
+margin-top: -4px;
+right: 6px;
+width: 6px;
+height: 6px;
+}
+/* tabs */
+.tabTop, .tabBottom, .tabLeft, .tabRight {
+background: #fff;
+border: 1px solid #ebebeb;
+padding: 0px;
+border-radius: 2px;
+}
+.tabItemBand {
+text-align: center;
+}
+.tabItemBandLeft {
+text-align: left;
+}
+.tabItem, .tabItemSelected, .tabItemDisabled {
+text-decoration: none;
+color: #8e8e8e;
+font-weight: bold;
+padding: 9px 15px;
+display: inline-block;
+line-height: 26px;
+}
+/*.tabItemSelected, .tabItem:hover {
+color: $accentColor;
+}*/
+.tabItemSelected {
+color: #c0b283;
+background-color: white;
+border-bottom-style: solid;
+border-bottom-width: 3px;
+border-bottom-color: #c0b283;
+margin-bottom: -3px;
+}
+.tabItem:hover, .tabItemSelected:hover {
+color: #a79344;
+background-color: #f6f4ec;
+transition: background-color 600ms;
+}
+.tabItemDisabled {
+color: #cbcbcb;
+}
+.tabPane {
+background: #fff;
+padding: 0px;
+}
+.tabPaneCentered {
+background: #fff;
+margin-top: 2px;
+}
+.tabPaneGrey {
+background-color: #f4f4f4;
+}
+.tabTop .tabPane {
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+}
+.tabBottom .tabPane {
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #ebebeb;
+}
+.tabLeft .tabPane {
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #ebebeb;
+}
+.tabRight .tabPane {
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #ebebeb;
+}
+.tabLeft .tabItem, .tabLeft .tabItemSelected, .tabLeft .tabItemDisabled {
+text-align: right;
+display: block;
+}
+.tabRight .tabItem, .tabRight .tabItemSelected, .tabRight .tabItemDisabled {
+text-align: left;
+display: block;
+}
+.tabFlaredItemBand {
+border-bottom-style: solid;
+border-bottom-width: 3px;
+border-bottom-color: #c0b283;
+padding-top: 2px;
+padding-right: 19.5px;
+display: flex;
+}
+.tabFlaredItem, .tabFlaredItemSelected, .tabFlaredItemDisabled {
+text-decoration: none;
+color: #909090;
+font-weight: bold;
+margin: 0px 19.5px;
+display: inline-block;
+position: relative;
+line-height: 39px;
+}
+.tabFlaredItem, .tabFlaredItemDisabled {
+background: #f2f2f2;
+z-index: 2;
+}
+.tabFlaredItemSelected {
+color: #fff;
+background: #c0b283;
+z-index: 3;
+}
+.tabFlaredItem:before, .tabFlaredItemSelected:before, .tabFlaredItemDisabled:before {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' fill='%23F2F2F2'%3E%3Cdefs%3E%3Cfilter id='a' x='-0.29625' y='-0.30384615' width='1.5925' height='1.6076923'%3E%3CfeGaussianBlur stdDeviation='2.46875'/%3E%3C/filter%3E%3C/defs%3E%3Cpath d='M 0,38 C 20,38 18,0 38,0 v 38 z'/%3E%3Cpath opacity='0.5' fill='%23000000' stroke='none' filter='url(%23a)' d='m 38.5,37.5 c -10,0 -14.5,-9.5 -19,-19 h -1 V 38 h 20 z'/%3E%3Cpath d='M 38,38 C 18,38 20,0 0,0 v 38 z'/%3E%3C/svg%3E");
+background-size: cover;
+display: block;
+position: absolute;
+top: 0px;
+left: -39px;
+width: 39px;
+height: 39px;
+content: "";
+}
+td:first-child > .tabFlaredItem:before, .tabFlared .tabFlaredItem:first-child:before {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' fill='%23F2F2F2'%3E%3Cpath d='M 38,38 H 19 V 14 C 19,6 25,0 33,0 h 5 z'/%3E%3C/svg%3E");;
+}
+.tabFlaredItem:after, .tabFlaredItemSelected:after, .tabFlaredItemDisabled:after {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' fill='%23F2F2F2' %3E%3Cpath d='M 38,38 C 18,38 20,0 0,0 v 38 z'/%3E%3C/svg%3E");
+background-size: cover;
+display: block;
+position: absolute;
+top: 0px;
+right: -39px;
+width: 39px;
+height: 39px;
+content: "";
+}
+.tabFlaredItemSelected:before {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' fill='%23C0B283'%3E%3Cpath d='M 0,38 C 20,38 18,0 38,0 v 38 z'/%3E%3C/svg%3E");;
+}
+td:first-child > .tabFlaredItemSelected:before, .tabFlared .tabFlaredItemSelected:first-child:before {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' fill='%23C0B283'%3E%3Cpath d='M 38,38 H 19 V 14 C 19,6 25,0 33,0 h 5 z'/%3E%3C/svg%3E");;
+}
+.tabFlaredItemSelected:after {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='38' fill='%23C0B283' %3E%3Cpath d='M 38,38 C 18,38 20,0 0,0 v 38 z'/%3E%3C/svg%3E");;
+}
+.tabFlaredPanes {
+padding: 4px;
+}
+.compact .tabItem, .compact .tabItemSelected, .compact .tabItemDisabled {
+padding: $cIconPad $cFontPad;
+}
+.compact .tabFlaredItemBand {
+border-bottom-width: 2px;
+padding-top: 1px;
+padding-right: 12.5px;
+}
+.compact .tabFlaredItem, .compact .tabFlaredItemSelected, .compact .tabFlaredItemDisabled {
+margin: 0px 12.5px;
+line-height: 25px;
+}
+.compact .tabFlaredItem:before, .compact .tabFlaredItemSelected:before, .compact .tabFlaredItemDisabled:before {
+left: -25px;
+width: 25px;
+height: 25px;
+}
+.compact .tabFlaredItem:after, .compact .tabFlaredItemSelected:after, .compact .tabFlaredItemDisabled:after {
+right: -25px;
+width: 25px;
+height: 25px;
+}
+/* tabband */
+.tabband {
+background: #f2f2f2;
+}
+.tabbandTab, .tabbandTabSelected {
+text-decoration: none;
+white-space: nowrap;
+font-weight: bold;
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #dbdbdb;
+padding: 10px 15px;
+display: inline-block;
+line-height: 44px;
+}
+.tabbandTab {
+color: #373737;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #e6e6e6;
+padding-top: 10px;
+padding-bottom: 9px;
+}
+.tabbandTab:hover {
+color: #848484;
+transition: color 0.3s;
+}
+.tabbandTabSelected {
+color: #a79344;
+background-color: #fdfdfd;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #c0b283;
+padding-top: 10px !important;
+padding-bottom: 8px !important;
+}
+.tabbandTabDisabled, .tabbandTabDisabled:hover {
+color: #cbcbcb;
+}
+.tabbandButton, .tabbandButtonDisabled {
+background: #f2f2f2;
+padding: 9px;
+display: block;
+}
+.tabbandButton:hover .icon {
+fill: #a79344;
+stroke: #a79344;
+}
+.tabbandButtonDisabled .icon {
+fill: #cbcbcb;
+stroke: #cbcbcb;
+}
+.tabbandFlared .tabbandButton, .tabbandFlared .tabbandButtonDisabled {
+background: transparent;
+}
+.tabbandFlared .tabFlaredItem, .tabbandFlared .tabFlaredItemSelected, .tabbandFlared .tabFlaredItemDisabled {
+margin-right: 18.5px;
+}
+.tabbandFlared .iconButton {
+margin-top: -4px;
+margin-bottom: -4px;
+}
+.compact .tabbandTab, .compact .tabbandTabSelected {
+font-size: 13px;
+line-height: 28px;
+}
+.compact .tabbandButton, .compact .tabbandButtonDisabled {
+padding: 5px;
+}
+.compact .tabbandFlared .tabFlaredItem, .compact .tabbandFlared .tabFlaredItemSelected, .compact .tabbandFlared .tabFlaredItemDisabled {
+font-size: 14px;
+margin-right: 11.5px;
+}
+/* window */
+.window {
+background: #fff;
+border: 1px solid #d9d9d9;
+border-radius: 10px;
+box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+}
+.windowTitle {
+color: #6e6e6e;
+background-color: #f6f6f6;
+font-size: 14px;
+font-weight: bold;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d9d9d9;
+padding: 0px 15px;
+cursor: default;
+line-height: 44px;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+.windowHeader, .windowFooter, .windowTBar, .windowBBar, .windowBody {
+padding: 15px;
+}
+.windowButtons {
+text-align: right;
+font-size: 0px;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+border-bottom-style: none;
+border-bottom-width: 1px;
+border-bottom-color: #ebebeb;
+margin-bottom: -1px;
+}
+.windowResize {
+background: #f7f7f7;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+position: relative;
+height: 22px;
+}
+.windowResizeThumb {
+display: block;
+position: relative;
+width: 22px;
+height: 100%;
+}
+.windowResizeThumb:before {
+border: 8px solid #ebebeb;
+border-top-color: transparent;
+border-left-color: transparent;
+display: block;
+position: absolute;
+right: 3px;
+bottom: 3px;
+width: 16px;
+height: 16px;
+border-radius: 2px;
+box-sizing: border-box;
+content: "";
+}
+.windowCloseButton {
+cursor: pointer;
+}
+.compact .windowTitle {
+font-size: 14px;
+padding: 4px 1rem;
+line-height: 32px;
+}
+.compact .windowHeader, .compact .windowFooter, .compact .windowTBar, .compact .windowBBar, .compact .windowBody {
+padding: 1rem;
+}
+.compact .windowResize {
+height: 12px;
+}
+.compact .windowResizeThumb {
+width: 12px;
+}
+.compact .windowResizeThumb:before {
+border-width: 6px;
+border-right-color: #d9d9d9;
+border-bottom-color: #d9d9d9;
+right: 1px;
+bottom: 1px;
+width: 12px;
+height: 12px;
+border-radius: 1px;
+}
+/* menu bar */
+.menubarItem {
+text-decoration: none;
+color: #a79344;
+font-weight: bold;
+padding: 9px 15px;
+display: inline-block;
+line-height: 26px;
+}
+.pulse .menubarItem {
+box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+transition: background-color 300ms cubic-bezier(0, 0.8, 1, 0.86), box-shadow 600ms;
+}
+.pulse .menubarItem:not(.menubarItemDisabled):active {
+box-shadow: inset 0px 0px 0px 44px rgba(255, 255, 255, 0.15);
+transition: none;
+}
+.menubarItemHover {
+color: #fff;
+background: #cdbe84;
+border-radius: 2px;
+}
+.menubarItemPressed {
+color: #fff;
+background: #a79344;
+border-radius: 2px;
+}
+.menubarItemDisabled {
+color: #cbcbcb;
+}
+.menubarItemCas:after {
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #a79344;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #a79344;
+margin-left: 15px;
+display: inline-block;
+position: relative;
+top: -3px;
+width: 9px;
+height: 9px;
+border-radius: 2px;
+content: "";
+-webkit-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+.menubarItemSep {
+border-left-style: dotted;
+border-left-width: 1px;
+border-left-color: #cbcbcb;
+vertical-align: bottom;
+height: 44px;
+}
+.compact .menubarItem {
+padding: 5px 7px;
+line-height: 18px;
+}
+.compact .menubarItemCas:after {
+margin-left: 7px;
+top: -2px;
+width: 6px;
+height: 6px;
+}
+.compact .menubarItemSep {
+height: 28px;
+}
+.menubarVertical .menubarItem {
+display: block;
+}
+.menubarVertical .menubarItemSep {
+border-top-style: dotted;
+border-top-width: 1px;
+border-top-color: #cbcbcb;
+border-left-style: none;
+height: 0px;
+}
+.menubarVertical .menubarItemCas:after {
+border: none;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #a79344;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #a79344;
+margin-top: 10px;
+float: right;
+border-radius: 2px;
+-webkit-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+.menubarVertical .menubarItemHover .menubarItemCas:after, .menubarVertical .menubarItemPressed .menubarItemCas:after {
+border-left-color: #fff;
+}
+.menubarVertical .menubarItemDisabled .menubarItemCas:after {
+border-left-color: #cbcbcb;
+}
+.compact .menubarVertical .menubarItemCas:after {
+margin-top: 7px;
+}
+.menubarItemHover .menubarItemCas:after, .menubarItemPressed .menubarItemCas:after {
+border-color: #fff;
+}
+.menubarItemDisabled .menubarItemCas:after {
+border-color: #cbcbcb;
+}
+/* menu */
+.menu {
+background: #fff;
+border: 1px solid #d9d9d9;
+border-radius: 2px;
+box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+}
+.menuItem {
+padding: 0px 15px;
+cursor: default;
+position: relative;
+line-height: 44px;
+}
+.pulse .menuItem {
+box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+transition: background-color 300ms cubic-bezier(0, 0.8, 1, 0.86), box-shadow 600ms;
+}
+.pulse .menuItem:not(.menuItemDisabled):active {
+box-shadow: inset 0px 0px 0px 44px rgba(255, 255, 255, 0.15);
+transition: none;
+}
+.menuItemLabel {
+display: inline-block;
+}
+.menuItemHover, .menuItemSelected {
+color: #fff;
+background: #c0b283;
+}
+.menuItemDisabled {
+color: #909090;
+background: #fff;
+}
+.menuItemCascade {
+padding-right: 30px;
+position: relative;
+}
+.menuItemCascade:after {
+font-size: 0px;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #909090;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #909090;
+margin-top: -6px;
+display: block;
+position: absolute;
+top: 50%;
+right: 0px;
+width: 9px;
+height: 9px;
+border-radius: 2px;
+content: '';
+-webkit-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+.menuItemHover .menuItemCascade:after, .menuItemSelected .menuItemCascade:after {
+border-color: #fff;
+}
+.menuSeparator {
+background: #ebebeb;
+margin: 0px !important;
+position: absolute;
+left: 0px;
+right: 0px;
+height: 1px;
+}
+.menuTitle {
+color: #909090;
+background: #f7f7f7;
+font-size: 12px;
+font-weight: bold;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #ebebeb;
+padding: 4px;
+cursor: default;
+}
+.menuIcon {
+padding-right: 9px;
+width: 26px;
+}
+.compact .menuItem {
+padding: 0px 5px;
+line-height: 28px;
+}
+.compact .menuIcon {
+padding-right: 5px;
+width: 18px;
+}
+.compact .menuItemCascade {
+padding-right: 14px;
+}
+.compact .menuItemCascade:after {
+margin-top: -4px;
+width: 6px;
+height: 6px;
+}
+.compact .menuTitle {
+font-size: 12px;
+}
+.menuItemHover .icon, .menuItemSelected .icon {
+fill: #fff;
+stroke: #fff;
+}
+/* pointer - window / menu */
+.pointerDown {
+border-top-style: solid;
+border-top-width: 10px;
+border-top-color: #d9d9d9;
+border-left-style: solid;
+border-left-width: 10px;
+border-left-color: transparent;
+border-right-style: solid;
+border-right-width: 10px;
+border-right-color: transparent;
+margin-left: -10px;
+left: 50%;
+bottom: -11px;
+width: 0;
+height: 0;
+}
+.pointerDown:after {
+border-top-style: solid;
+border-top-width: 10px;
+border-top-color: #fff;
+border-left-style: solid;
+border-left-width: 10px;
+border-left-color: transparent;
+border-right-style: solid;
+border-right-width: 10px;
+border-right-color: transparent;
+margin-left: -10px;
+display: block;
+position: absolute;
+left: 50%;
+bottom: 1px;
+width: 0;
+height: 0;
+content: "";
+}
+.pointerUp {
+border-left-style: solid;
+border-left-width: 10px;
+border-left-color: transparent;
+border-right-style: solid;
+border-right-width: 10px;
+border-right-color: transparent;
+border-bottom-style: solid;
+border-bottom-width: 10px;
+border-bottom-color: #d9d9d9;
+margin-left: -10px;
+top: -11px;
+left: 50%;
+width: 0;
+height: 0;
+}
+.pointerUp:after {
+border-left-style: solid;
+border-left-width: 10px;
+border-left-color: transparent;
+border-right-style: solid;
+border-right-width: 10px;
+border-right-color: transparent;
+border-bottom-style: solid;
+border-bottom-width: 10px;
+border-bottom-color: #fff;
+margin-left: -10px;
+display: block;
+position: absolute;
+top: 1px;
+left: 50%;
+width: 0;
+height: 0;
+content: "";
+}
+.pointerLeft {
+border-top-style: solid;
+border-top-width: 10px;
+border-top-color: transparent;
+border-right-style: solid;
+border-right-width: 10px;
+border-right-color: #d9d9d9;
+border-bottom-style: solid;
+border-bottom-width: 10px;
+border-bottom-color: transparent;
+margin-top: -10px;
+top: 50%;
+left: -11px;
+width: 0;
+height: 0;
+}
+.pointerLeft:after {
+border-top-style: solid;
+border-top-width: 10px;
+border-top-color: transparent;
+border-right-style: solid;
+border-right-width: 10px;
+border-right-color: #fff;
+border-bottom-style: solid;
+border-bottom-width: 10px;
+border-bottom-color: transparent;
+margin-top: -10px;
+display: block;
+position: absolute;
+top: 50%;
+left: 1px;
+width: 0;
+height: 0;
+content: "";
+}
+.pointerRight {
+border-top-style: solid;
+border-top-width: 10px;
+border-top-color: transparent;
+border-left-style: solid;
+border-left-width: 10px;
+border-left-color: #d9d9d9;
+border-bottom-style: solid;
+border-bottom-width: 10px;
+border-bottom-color: transparent;
+margin-top: -10px;
+top: 50%;
+right: -11px;
+width: 0;
+height: 0;
+}
+.pointerRight:after {
+border-top-style: solid;
+border-top-width: 10px;
+border-top-color: transparent;
+border-left-style: solid;
+border-left-width: 10px;
+border-left-color: #fff;
+border-bottom-style: solid;
+border-bottom-width: 10px;
+border-bottom-color: transparent;
+margin-top: -10px;
+display: block;
+position: absolute;
+top: 50%;
+right: 1px;
+width: 0;
+height: 0;
+content: "";
+}
+/* edit */
+.edit, .editPrimary {
+color: #373737;
+font: 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+border: none;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d9d9d9;
+padding: 15px;
+padding-bottom: 14px;
+vertical-align: middle;
+outline: none;
+}
+.editPrimary {
+border-radius: 3px;
+}
+.edit {
+background: url("accentEditBorder.png") no-repeat bottom transparent;
+background-size: 0px 2px;
+}
+.pulse .edit, .pulse .editBG {
+transition: background-size 200ms cubic-bezier(0, 0.8, 1, 0.86);
+}
+.pulse .editPrimary, .pulse .editBGPrimary {
+transition: box-shadow 200ms cubic-bezier(0, 0.8, 1, 0.86);
+}
+select.edit option, select.editPrimary option {
+color: #373737;
+background: #fff;
+}
+.editPrimary, .grid .edit {
+color: #373737;
+background: #fff;
+border: 1px solid #d9d9d9;
+padding: 14px;
+}
+.edit:hover, .editPrimary:hover {
+border-color: #d1c7a5;
+}
+.edit:focus {
+background-color: #fff;
+background-size: 100% 2px;
+border-color: #c0b283;
+}
+.editPrimary:focus, .grid .edit:focus {
+color: #373737;
+background: #fff;
+border-color: #c0b283;
+box-shadow: inset 0px 0px 0px 2px #c0b283;
+}
+.editError {
+color: #ff351c;
+background: #ffebe8;
+border-color: #ff351c;
+}
+.editWatermark {
+color: #909090;
+}
+.edit[disabled] {
+color: #909090;
+background: #fff;
+border-color: #ebebeb;
+}
+.compact .edit {
+background-size: 0% 1px;
+font-size: 14px;
+padding: 7px;
+padding-bottom: 6px;
+}
+.compact .edit:focus {
+background-size: 100% 1px;
+}
+.compact .editPrimary, .compact .grid .edit {
+font-size: 14px;
+padding: 7.5px;
+}
+.compact .editPrimary:focus, .compact .grid .edit:focus {
+box-shadow: inset 0px 0px 0px 1px #c0b283;
+}
+/* edit overrides */
+.panelHeaderAlt .edit, .panelFooterAlt .edit, .ctrlBarDis .edit {
+color: #373737;
+background: url("headerEditBorder.png") no-repeat bottom transparent;
+background-size: 0% 2px;
+border-color: rgba(217, 217, 217, 0.25);
+}
+.panelHeaderAlt .editPrimary, .panelFooterAlt .editPrimary, .ctrlBarDis .editPrimary {
+color: #373737;
+background: rgba(255, 255, 255, 0.25);
+border-color: rgba(217, 217, 217, 0.25);
+}
+.panelHeaderAlt .edit:hover, .panelHeaderAlt .editPrimary:hover, .panelHeaderAlt .edit:focus, .panelHeaderAlt .editPrimary:focus, .panelFooterAlt .edit:hover, .panelFooterAlt .editPrimary:hover, .panelFooterAlt .edit:focus, .panelFooterAlt .editPrimary:focus, .ctrlBarDis .edit:hover, .ctrlBarDis .editPrimary:hover, .ctrlBarDis .edit:focus, .ctrlBarDis .editPrimary:focus {
+border-color: #373737;
+}
+.panelHeaderAlt .edit:focus, .panelFooterAlt .edit:focus, .ctrlBarDis .edit:focus {
+background-size: 100% 2px;
+}
+.panelHeaderAlt .editError, .panelFooterAlt .editError, .ctrlBarDis .editError {
+color: #ff351c;
+background: transparent;
+}
+.panelHeaderAlt .editPrimary.editError, .panelFooterAlt .editPrimary.editError, .ctrlBarDis .editPrimary.editError {
+background: #ffebe8;
+}
+.panelHeaderAlt .editWatermark, .panelFooterAlt .editWatermark, .ctrlBarDis .editWatermark {
+color: #909090;
+}
+.panelHeaderAlt .edit[disabled], .panelFooterAlt .edit[disabled], .ctrlBarDis .edit[disabled] {
+color: #909090;
+background: transparent;
+border-color: #ebebeb;
+}
+.panelHeaderAlt .editPrimary:focus, .panelHeaderAlt .grid .edit:focus, .panelFooterAlt .editPrimary:focus, .panelFooterAlt .grid .edit:focus, .ctrlBarDis .editPrimary:focus, .ctrlBarDis .grid .edit:focus {
+box-shadow: inset 0px 0px 0px 2px #373737;
+}
+.panelHeaderContrast .editPrimary:focus, .panelHeaderContrast .grid .edit:focus, .panelFooterContrast .editPrimary:focus, .panelFooterContrast .grid .edit:focus, .ctrlBarDisContrast .editPrimary:focus, .ctrlBarDisContrast .grid .edit:focus {
+box-shadow: inset 0px 0px 0px 2px #c0b283;
+}
+.panelHeaderAlt .edit, .panelHeaderAlt .editPrimary, .panelHeaderContrast .edit, .panelHeaderContrast .editPrimary, .panelFooter .edit, .panelFooter .editPrimary, .panelFooterAlt .edit, .panelFooterAlt .editPrimary, .panelFooterContrast .edit, .panelFooterContrast .editPrimary, .ctrlBarDis .edit, .ctrlBarDis .editPrimary, .ctrlBarDisContrast .edit, .ctrlBarDisContrast .editPrimary {
+padding-top: 11px;
+padding-bottom: 10px;
+margin-top: 3px;
+vertical-align: top;
+}
+.panelHeaderAlt .editPrimary, .panelHeaderAlt .grid .edit, .panelHeaderContrast .editPrimary, .panelHeaderContrast .grid .edit, .panelFooter .editPrimary, .panelFooter .grid .edit, .panelFooterAlt .editPrimary, .panelFooterAlt .grid .edit, .panelFooterContrast .editPrimary, .panelFooterContrast .grid .edit, .ctrlBarDis .editPrimary, .ctrlBarDis .grid .edit, .ctrlBarDisContrast .editPrimary, .ctrlBarDisContrast .grid .edit {
+padding-top: 10px;
+padding-bottom: 10px;
+}
+.listItemSelected:not(.listItemSubtle) .edit, .listItemHover:not(.listItemSubtle) .edit, .gridRowSelected .edit, .gridRowHover .edit {
+color: #373737;
+background: url("accentForeEditBorder.png") no-repeat bottom transparent;
+background-size: 0% 2px;
+border-color: #fff;
+}
+.listItemSelected:not(.listItemSubtle) .edit:focus, .listItemHover:not(.listItemSubtle) .edit:focus, .gridRowSelected .edit:focus, .gridRowHover .edit:focus {
+background-size: 100% 2px;
+}
+.listItemSelected:not(.listItemSubtle) .editError, .listItemHover:not(.listItemSubtle) .editError, .gridRowSelected .editError, .gridRowHover .editError {
+color: #ff351c;
+background: rgba(255, 53, 28, 0.15);
+border-color: #ff351c;
+}
+.listItemSelected:not(.listItemSubtle) .edit[disabled], .listItemHover:not(.listItemSubtle) .edit[disabled], .gridRowSelected .edit[disabled], .gridRowHover .edit[disabled] {
+color: rgba(255, 255, 255, 0.75);
+border-color: rgba(255, 255, 255, 0.75);
+}
+.listItemSelected:not(.listItemSubtle) .editPrimary, .grid .listItemSelected:not(.listItemSubtle) .edit, .listItemHover:not(.listItemSubtle) .editPrimary, .grid .listItemHover:not(.listItemSubtle) .edit, .gridRowSelected .editPrimary, .grid .gridRowSelected .edit, .gridRowHover .editPrimary, .grid .gridRowHover .edit {
+color: #373737;
+background: #fff;
+border-color: #fff;
+}
+.listItemSelected:not(.listItemSubtle) .editPrimary:focus, .grid .listItemSelected:not(.listItemSubtle) .edit:focus, .listItemHover:not(.listItemSubtle) .editPrimary:focus, .grid .listItemHover:not(.listItemSubtle) .edit:focus, .gridRowSelected .editPrimary:focus, .grid .gridRowSelected .edit:focus, .gridRowHover .editPrimary:focus, .grid .gridRowHover .edit:focus {
+color: #373737;
+background: #fff;
+border-color: #fff;
+box-shadow: inset 0px 0px 0px 2px #fff;
+}
+.compact .panelHeaderAlt .edit, .compact .panelHeaderContrast .edit, .compact .panelFooter .edit, .compact .panelFooterAlt .edit, .compact .panelFooterContrast .edit, .compact .ctrlBarDis .edit, .compact .ctrlBarDisContrast .edit {
+background-size: 0% 1px;
+padding: 4px;
+margin-top: 2px;
+}
+.compact .panelHeaderAlt .edit:focus, .compact .panelHeaderContrast .edit:focus, .compact .panelFooter .edit:focus, .compact .panelFooterAlt .edit:focus, .compact .panelFooterContrast .edit:focus, .compact .ctrlBarDis .edit:focus, .compact .ctrlBarDisContrast .edit:focus {
+background-size: 100% 1px;
+}
+.compact .panelHeaderAlt .editPrimary, .compact .panelHeaderAlt .grid .edit, .compact .panelHeaderContrast .editPrimary, .compact .panelHeaderContrast .grid .edit, .compact .panelFooter .editPrimary, .compact .panelFooter .grid .edit, .compact .panelFooterAlt .editPrimary, .compact .panelFooterAlt .grid .edit, .compact .panelFooterContrast .editPrimary, .compact .panelFooterContrast .grid .edit, .compact .ctrlBarDis .editPrimary, .compact .ctrlBarDis .grid .edit, .compact .ctrlBarDisContrast .editPrimary, .compact .ctrlBarDisContrast .grid .edit {
+padding: 4px;
+margin-top: 2px;
+}
+.compact .panelHeaderAlt .editPrimary:focus, .compact .panelHeaderAlt .grid .edit:focus, .compact .panelHeaderContrast .editPrimary:focus, .compact .panelHeaderContrast .grid .edit:focus, .compact .panelFooter .editPrimary:focus, .compact .panelFooter .grid .edit:focus, .compact .panelFooterAlt .editPrimary:focus, .compact .panelFooterAlt .grid .edit:focus, .compact .panelFooterContrast .editPrimary:focus, .compact .panelFooterContrast .grid .edit:focus, .compact .ctrlBarDis .editPrimary:focus, .compact .ctrlBarDis .grid .edit:focus, .compact .ctrlBarDisContrast .editPrimary:focus, .compact .ctrlBarDisContrast .grid .edit:focus {
+box-shadow: inset 0px 0px 0px 1px #373737;
+}
+.compact .panelHeaderContrast .editPrimary:focus, .compact .panelHeaderContrast .grid .edit:focus, .compact .panelFooterContrast .editPrimary:focus, .compact .panelFooterContrast .grid .edit:focus, .compact .ctrlBarDisContrast .editPrimary:focus, .compact .ctrlBarDisContrast .grid .edit:focus {
+box-shadow: inset 0px 0px 0px 1px #c0b283;
+}
+.compact .listItemSelected:not(.listItemSubtle) .editPrimary:focus, .compact .listItemSelected:not(.listItemSubtle) .grid .edit:focus, .compact .listItemHover:not(.listItemSubtle) .editPrimary:focus, .compact .listItemHover:not(.listItemSubtle) .grid .edit:focus, .compact .gridRowSelected .editPrimary:focus, .compact .gridRowSelected .grid .edit:focus, .compact .gridRowHover .editPrimary:focus, .compact .gridRowHover .grid .edit:focus {
+box-shadow: inset 0px 0px 0px 1px #fff;
+}
+/* edit button group */
+.editBG, .editBGPrimary {
+color: #373737;
+background: #fff;
+font: 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+border: 0px none;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d9d9d9;
+padding: 0px;
+vertical-align: middle;
+outline: none;
+}
+.editBG {
+background: url("accentEditBorder.png") no-repeat bottom transparent;
+background-size: 0% 2px;
+}
+.editBGPrimary, .grid .editBG {
+color: #373737;
+background: #fff;
+border: 1px solid #d9d9d9;
+border-radius: 4px;
+}
+.editBGHover {
+border-color: #d1c7a5;
+}
+.editBGFocus {
+background-size: 100% 2px;
+border-color: #c0b283;
+}
+.editBGPrimary.editBGFocus, .grid .editBG.editBGFocus {
+box-shadow: inset 0px 0px 0px 2px #c0b283;
+}
+.editBGError {
+color: #ff351c;
+background: #ffebe8;
+border-color: #ff351c;
+}
+.editBGSeparator {
+font-size: 0px;
+padding: 0px;
+width: 0px;
+}
+.editBGEdit {
+color: #373737;
+background: transparent;
+font: 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+border: none;
+padding: 15px;
+padding-bottom: 14px;
+outline: none;
+}
+.editBGPrimary .editBGEdit, .grid .editBG .editBGEdit {
+padding: 14px;
+}
+.editBGButton {
+padding: 9px 15px;
+padding-bottom: 8px;
+cursor: pointer;
+border-radius: 2px 2px 0px 0px;
+}
+.editBGPrimary .editBGButton, .grid .editBG .editBGButton {
+padding-top: 8px;
+border-radius: 0px;
+}
+.editBGButtonHover {
+color: #fff;
+background: #d1c7a5;
+}
+.editBGButtonPressed {
+color: #fff;
+background: #c0b283;
+}
+.editBGWatermark {
+color: #909090;
+}
+.editBGButtonHover .icon, .editBGButtonPressed .icon {
+stroke: #fff;
+fill: #fff;
+}
+.editBGError .icon {
+stroke: #ff351c;
+fill: #ff351c;
+}
+.compact .editBG {
+background-size: 0% 1px;
+}
+.compact .editBGFocus {
+background-size: 100% 1px;
+}
+.compact .editBGPrimary.editBGFocus, .compact .grid .editBG.editBGFocus {
+box-shadow: inset 0px 0px 0px 1px #c0b283;
+}
+.compact .editBGEdit, .compact .grid .editBG .editBGEdit {
+font: 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+padding: 7.5px;
+padding-bottom: 6px;
+}
+.compact .editBGPrimary .editBGEdit, .compact .grid .editBG .editBGEdit {
+padding: 7.5px;
+}
+.compact .editBGButton, .compact .grid .editBG .editBGButton {
+font: 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+padding: 5px 6px;
+}
+/* edit button group overrides */
+.panelHeaderAlt .editBG, .panelFooterAlt .editBG, .ctrlBarDis .editBG {
+color: #373737;
+border-color: rgba(217, 217, 217, 0.25);
+}
+.panelHeaderAlt .editBGPrimary, .panelFooterAlt .editBGPrimary, .ctrlBarDis .editBGPrimary {
+color: #373737;
+background: rgba(255, 255, 255, 0.25);
+border-color: rgba(217, 217, 217, 0.25);
+}
+.panelHeaderAlt .editBGButton, .panelFooterAlt .editBGButton, .ctrlBarDis .editBGButton {
+background: rgba(255, 255, 255, 0.25);
+}
+.panelHeaderAlt .editBGButton .icon, .panelFooterAlt .editBGButton .icon, .ctrlBarDis .editBGButton .icon {
+fill: #373737;
+stroke: #373737;
+}
+.panelHeaderAlt .editBG .editBGEdit, .panelHeaderAlt .editBGPrimary .editBGEdit, .panelFooterAlt .editBG .editBGEdit, .panelFooterAlt .editBGPrimary .editBGEdit, .ctrlBarDis .editBG .editBGEdit, .ctrlBarDis .editBGPrimary .editBGEdit {
+color: #373737;
+}
+.panelHeaderAlt .editBG:hover, .panelHeaderAlt .editBGPrimary:hover, .panelHeaderAlt .editBGFocus, .panelHeaderAlt .editBGPrimary.editBGFocus, .panelFooterAlt .editBG:hover, .panelFooterAlt .editBGPrimary:hover, .panelFooterAlt .editBGFocus, .panelFooterAlt .editBGPrimary.editBGFocus, .ctrlBarDis .editBG:hover, .ctrlBarDis .editBGPrimary:hover, .ctrlBarDis .editBGFocus, .ctrlBarDis .editBGPrimary.editBGFocus {
+border-color: #373737;
+}
+.panelHeaderAlt .editBG:hover .editBGButton, .panelHeaderAlt .editBGPrimary:hover .editBGButton, .panelHeaderAlt .editBGFocus .editBGButton, .panelHeaderAlt .editBGPrimary.editBGFocus .editBGButton, .panelFooterAlt .editBG:hover .editBGButton, .panelFooterAlt .editBGPrimary:hover .editBGButton, .panelFooterAlt .editBGFocus .editBGButton, .panelFooterAlt .editBGPrimary.editBGFocus .editBGButton, .ctrlBarDis .editBG:hover .editBGButton, .ctrlBarDis .editBGPrimary:hover .editBGButton, .ctrlBarDis .editBGFocus .editBGButton, .ctrlBarDis .editBGPrimary.editBGFocus .editBGButton {
+color: #fff;
+background: #373737;
+}
+.panelHeaderAlt .editBG:hover .editBGButton .icon, .panelHeaderAlt .editBGPrimary:hover .editBGButton .icon, .panelHeaderAlt .editBGFocus .editBGButton .icon, .panelHeaderAlt .editBGPrimary.editBGFocus .editBGButton .icon, .panelFooterAlt .editBG:hover .editBGButton .icon, .panelFooterAlt .editBGPrimary:hover .editBGButton .icon, .panelFooterAlt .editBGFocus .editBGButton .icon, .panelFooterAlt .editBGPrimary.editBGFocus .editBGButton .icon, .ctrlBarDis .editBG:hover .editBGButton .icon, .ctrlBarDis .editBGPrimary:hover .editBGButton .icon, .ctrlBarDis .editBGFocus .editBGButton .icon, .ctrlBarDis .editBGPrimary.editBGFocus .editBGButton .icon {
+fill: #fff;
+stroke: #fff;
+}
+.panelHeaderAlt .editBGError, .panelFooterAlt .editBGError, .ctrlBarDis .editBGError {
+color: #ff351c;
+background: transparent;
+}
+.panelHeaderAlt .editBGPrimary.editBGError, .panelFooterAlt .editBGPrimary.editBGError, .ctrlBarDis .editBGPrimary.editBGError {
+background: #ffebe8;
+}
+.panelHeaderAlt .editBGWatermark, .panelFooterAlt .editBGWatermark, .ctrlBarDis .editBGWatermark {
+color: #909090;
+}
+.panelHeaderAlt .editBGEdit[disabled], .panelFooterAlt .editBGEdit[disabled], .ctrlBarDis .editBGEdit[disabled] {
+color: #909090;
+border-color: #ebebeb;
+}
+.panelHeaderAlt .editBG, .panelHeaderAlt .editBGPrimary, .panelHeaderContrast .editBG, .panelHeaderContrast .editBGPrimary, .panelFooter .editBG, .panelFooter .editBGPrimary, .panelFooterAlt .editBG, .panelFooterAlt .editBGPrimary, .panelFooterContrast .editBG, .panelFooterContrast .editBGPrimary, .ctrlBarDis .editBG, .ctrlBarDis .editBGPrimary, .ctrlBarDisContrast .editBG, .ctrlBarDisContrast .editBGPrimary {
+margin-top: 3px;
+vertical-align: top;
+}
+.panelHeaderAlt .editBG .editBGEdit, .panelHeaderAlt .editBGPrimary .editBGEdit, .panelHeaderContrast .editBG .editBGEdit, .panelHeaderContrast .editBGPrimary .editBGEdit, .panelFooter .editBG .editBGEdit, .panelFooter .editBGPrimary .editBGEdit, .panelFooterAlt .editBG .editBGEdit, .panelFooterAlt .editBGPrimary .editBGEdit, .panelFooterContrast .editBG .editBGEdit, .panelFooterContrast .editBGPrimary .editBGEdit, .ctrlBarDis .editBG .editBGEdit, .ctrlBarDis .editBGPrimary .editBGEdit, .ctrlBarDisContrast .editBG .editBGEdit, .ctrlBarDisContrast .editBGPrimary .editBGEdit {
+padding-top: 11px;
+padding-bottom: 10px;
+}
+.panelHeaderAlt .editBG .editBGButton, .panelHeaderAlt .editBGPrimary .editBGButton, .panelHeaderContrast .editBG .editBGButton, .panelHeaderContrast .editBGPrimary .editBGButton, .panelFooter .editBG .editBGButton, .panelFooter .editBGPrimary .editBGButton, .panelFooterAlt .editBG .editBGButton, .panelFooterAlt .editBGPrimary .editBGButton, .panelFooterContrast .editBG .editBGButton, .panelFooterContrast .editBGPrimary .editBGButton, .ctrlBarDis .editBG .editBGButton, .ctrlBarDis .editBGPrimary .editBGButton, .ctrlBarDisContrast .editBG .editBGButton, .ctrlBarDisContrast .editBGPrimary .editBGButton {
+padding-top: 5px;
+padding-bottom: 4px;
+}
+.panelHeaderAlt .editBGPrimary .editBGEdit, .panelHeaderAlt .grid .editBG .editBGEdit, .panelHeaderContrast .editBGPrimary .editBGEdit, .panelHeaderContrast .grid .editBG .editBGEdit, .panelFooter .editBGPrimary .editBGEdit, .panelFooter .grid .editBG .editBGEdit, .panelFooterAlt .editBGPrimary .editBGEdit, .panelFooterAlt .grid .editBG .editBGEdit, .panelFooterContrast .editBGPrimary .editBGEdit, .panelFooterContrast .grid .editBG .editBGEdit, .ctrlBarDis .editBGPrimary .editBGEdit, .ctrlBarDis .grid .editBG .editBGEdit, .ctrlBarDisContrast .editBGPrimary .editBGEdit, .ctrlBarDisContrast .grid .editBG .editBGEdit {
+padding-top: 10px;
+padding-bottom: 10px;
+}
+.panelHeaderAlt .editBGPrimary .editBGButton, .panelHeaderAlt .grid .editBG .editBGButton, .panelHeaderContrast .editBGPrimary .editBGButton, .panelHeaderContrast .grid .editBG .editBGButton, .panelFooter .editBGPrimary .editBGButton, .panelFooter .grid .editBG .editBGButton, .panelFooterAlt .editBGPrimary .editBGButton, .panelFooterAlt .grid .editBG .editBGButton, .panelFooterContrast .editBGPrimary .editBGButton, .panelFooterContrast .grid .editBG .editBGButton, .ctrlBarDis .editBGPrimary .editBGButton, .ctrlBarDis .grid .editBG .editBGButton, .ctrlBarDisContrast .editBGPrimary .editBGButton, .ctrlBarDisContrast .grid .editBG .editBGButton {
+padding-top: 4px;
+padding-bottom: 4px;
+}
+.panelHeaderAlt .editBG, .panelFooterAlt .editBG, .ctrlBarDis .editBG {
+background-image: url("headerEditBorder.png");
+}
+.panelHeaderAlt .editBGPrimary.editBGFocus, .panelHeaderAlt .grid .editBGFocus, .panelFooterAlt .editBGPrimary.editBGFocus, .panelFooterAlt .grid .editBGFocus, .ctrlBarDis .editBGPrimary.editBGFocus, .ctrlBarDis .grid .editBGFocus {
+box-shadow: inset 0px 0px 0px 2px #373737;
+}
+.listItemSelected:not(.listItemSubtle) .editBG, .listItemHover:not(.listItemSubtle) .editBG, .gridRowSelected .editBG, .gridRowHover .editBG {
+color: #373737;
+border-color: #fff;
+}
+.listItemSelected:not(.listItemSubtle) .editBGPrimary, .listItemHover:not(.listItemSubtle) .editBGPrimary, .gridRowSelected .editBGPrimary, .gridRowHover .editBGPrimary {
+color: #373737;
+background: transparent;
+border-color: #fff;
+}
+.listItemSelected:not(.listItemSubtle) .editBG .editBGEdit, .listItemSelected:not(.listItemSubtle) .editBGPrimary .editBGEdit, .listItemHover:not(.listItemSubtle) .editBG .editBGEdit, .listItemHover:not(.listItemSubtle) .editBGPrimary .editBGEdit, .gridRowSelected .editBG .editBGEdit, .gridRowSelected .editBGPrimary .editBGEdit, .gridRowHover .editBG .editBGEdit, .gridRowHover .editBGPrimary .editBGEdit {
+color: #373737;
+}
+.listItemSelected:not(.listItemSubtle) .editBG:hover, .listItemSelected:not(.listItemSubtle) .editBGPrimary:hover, .listItemSelected:not(.listItemSubtle) .editBGFocus, .listItemSelected:not(.listItemSubtle) .editBGPrimary.editBGFocus, .listItemHover:not(.listItemSubtle) .editBG:hover, .listItemHover:not(.listItemSubtle) .editBGPrimary:hover, .listItemHover:not(.listItemSubtle) .editBGFocus, .listItemHover:not(.listItemSubtle) .editBGPrimary.editBGFocus, .gridRowSelected .editBG:hover, .gridRowSelected .editBGPrimary:hover, .gridRowSelected .editBGFocus, .gridRowSelected .editBGPrimary.editBGFocus, .gridRowHover .editBG:hover, .gridRowHover .editBGPrimary:hover, .gridRowHover .editBGFocus, .gridRowHover .editBGPrimary.editBGFocus {
+border-color: #fff;
+}
+.listItemSelected:not(.listItemSubtle) .editBG:hover .editBGButton, .listItemSelected:not(.listItemSubtle) .editBGPrimary:hover .editBGButton, .listItemSelected:not(.listItemSubtle) .editBGFocus .editBGButton, .listItemSelected:not(.listItemSubtle) .editBGPrimary.editBGFocus .editBGButton, .listItemHover:not(.listItemSubtle) .editBG:hover .editBGButton, .listItemHover:not(.listItemSubtle) .editBGPrimary:hover .editBGButton, .listItemHover:not(.listItemSubtle) .editBGFocus .editBGButton, .listItemHover:not(.listItemSubtle) .editBGPrimary.editBGFocus .editBGButton, .gridRowSelected .editBG:hover .editBGButton, .gridRowSelected .editBGPrimary:hover .editBGButton, .gridRowSelected .editBGFocus .editBGButton, .gridRowSelected .editBGPrimary.editBGFocus .editBGButton, .gridRowHover .editBG:hover .editBGButton, .gridRowHover .editBGPrimary:hover .editBGButton, .gridRowHover .editBGFocus .editBGButton, .gridRowHover .editBGPrimary.editBGFocus .editBGButton {
+color: #c0b283;
+background: #fff;
+}
+.listItemSelected:not(.listItemSubtle) .editBG:hover .editBGButton .icon, .listItemSelected:not(.listItemSubtle) .editBGPrimary:hover .editBGButton .icon, .listItemSelected:not(.listItemSubtle) .editBGFocus .editBGButton .icon, .listItemSelected:not(.listItemSubtle) .editBGPrimary.editBGFocus .editBGButton .icon, .listItemHover:not(.listItemSubtle) .editBG:hover .editBGButton .icon, .listItemHover:not(.listItemSubtle) .editBGPrimary:hover .editBGButton .icon, .listItemHover:not(.listItemSubtle) .editBGFocus .editBGButton .icon, .listItemHover:not(.listItemSubtle) .editBGPrimary.editBGFocus .editBGButton .icon, .gridRowSelected .editBG:hover .editBGButton .icon, .gridRowSelected .editBGPrimary:hover .editBGButton .icon, .gridRowSelected .editBGFocus .editBGButton .icon, .gridRowSelected .editBGPrimary.editBGFocus .editBGButton .icon, .gridRowHover .editBG:hover .editBGButton .icon, .gridRowHover .editBGPrimary:hover .editBGButton .icon, .gridRowHover .editBGFocus .editBGButton .icon, .gridRowHover .editBGPrimary.editBGFocus .editBGButton .icon {
+fill: #c0b283;
+stroke: #c0b283;
+}
+.listItemSelected:not(.listItemSubtle) .editBGError, .listItemSelected:not(.listItemSubtle) .editBGError .editBGEdit, .listItemHover:not(.listItemSubtle) .editBGError, .listItemHover:not(.listItemSubtle) .editBGError .editBGEdit, .gridRowSelected .editBGError, .gridRowSelected .editBGError .editBGEdit, .gridRowHover .editBGError, .gridRowHover .editBGError .editBGEdit {
+color: #ff351c;
+background: transparent;
+border-color: #ff351c;
+}
+.listItemSelected:not(.listItemSubtle) .editBGError .icon, .listItemSelected:not(.listItemSubtle) .editBGError .editBGEdit .icon, .listItemHover:not(.listItemSubtle) .editBGError .icon, .listItemHover:not(.listItemSubtle) .editBGError .editBGEdit .icon, .gridRowSelected .editBGError .icon, .gridRowSelected .editBGError .editBGEdit .icon, .gridRowHover .editBGError .icon, .gridRowHover .editBGError .editBGEdit .icon {
+fill: #ff351c;
+stroke: #ff351c;
+}
+.listItemSelected:not(.listItemSubtle) .editBGPrimary.editBGError, .listItemHover:not(.listItemSubtle) .editBGPrimary.editBGError, .gridRowSelected .editBGPrimary.editBGError, .gridRowHover .editBGPrimary.editBGError {
+background: #ffebe8;
+}
+.listItemSelected:not(.listItemSubtle) .editBGWatermark, .listItemHover:not(.listItemSubtle) .editBGWatermark, .gridRowSelected .editBGWatermark, .gridRowHover .editBGWatermark {
+color: rgba(255, 255, 255, 0.75);
+}
+.listItemSelected:not(.listItemSubtle) .editBGEdit[disabled], .listItemHover:not(.listItemSubtle) .editBGEdit[disabled], .gridRowSelected .editBGEdit[disabled], .gridRowHover .editBGEdit[disabled] {
+color: rgba(255, 255, 255, 0.75);
+border-color: rgba(255, 255, 255, 0.75);
+}
+.listItemSelected:not(.listItemSubtle) .editBG, .listItemHover:not(.listItemSubtle) .editBG, .gridRowSelected .editBG, .gridRowHover .editBG {
+background-image: url("accentForeEditBorder.png");
+}
+.listItemSelected:not(.listItemSubtle) .editBGPrimary.editBGFocus, .listItemSelected:not(.listItemSubtle) .grid .editBGFocus, .listItemHover:not(.listItemSubtle) .editBGPrimary.editBGFocus, .listItemHover:not(.listItemSubtle) .grid .editBGFocus, .gridRowSelected .editBGPrimary.editBGFocus, .gridRowSelected .grid .editBGFocus, .gridRowHover .editBGPrimary.editBGFocus, .gridRowHover .grid .editBGFocus {
+box-shadow: inset 0px 0px 0px 2px #fff;
+}
+.compact .panelHeaderAlt .editBGEdit, .compact .panelHeaderAlt .grid .editBG .editBGEdit, .compact .panelHeaderContrast .editBGEdit, .compact .panelHeaderContrast .grid .editBG .editBGEdit, .compact .panelFooterAlt .editBGEdit, .compact .panelFooterAlt .grid .editBG .editBGEdit, .compact .panelFooterContrast .editBGEdit, .compact .panelFooterContrast .grid .editBG .editBGEdit, .compact .ctrlBarDis .editBGEdit, .compact .ctrlBarDis .grid .editBG .editBGEdit, .compact .ctrlBarDisContrast .editBGEdit, .compact .ctrlBarDisContrast .grid .editBG .editBGEdit {
+font: 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+padding: 4px;
+}
+.compact .panelHeaderAlt .editBGButton, .compact .panelHeaderAlt .grid .editBG .editBGButton, .compact .panelHeaderContrast .editBGButton, .compact .panelHeaderContrast .grid .editBG .editBGButton, .compact .panelFooterAlt .editBGButton, .compact .panelFooterAlt .grid .editBG .editBGButton, .compact .panelFooterContrast .editBGButton, .compact .panelFooterContrast .grid .editBG .editBGButton, .compact .ctrlBarDis .editBGButton, .compact .ctrlBarDis .grid .editBG .editBGButton, .compact .ctrlBarDisContrast .editBGButton, .compact .ctrlBarDisContrast .grid .editBG .editBGButton {
+font: 14px Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+padding: 5px 4px;
+}
+.compact .panelHeaderAlt .editBGPrimary.editBGFocus, .compact .panelHeaderAlt .grid .editBG.editBGFocus, .compact .panelFooterAlt .editBGPrimary.editBGFocus, .compact .panelFooterAlt .grid .editBG.editBGFocus, .compact .ctrlBarDis .editBGPrimary.editBGFocus, .compact .ctrlBarDis .grid .editBG.editBGFocus {
+box-shadow: inset 0px 0px 0px 1px #373737;
+}
+.compact .panelHeaderContrast .editBGPrimary.editBGFocus, .compact .panelHeaderContrast .grid .editBG.editBGFocus, .compact .panelFooterContrast .editBGPrimary.editBGFocus, .compact .panelFooterContrast .grid .editBG.editBGFocus, .compact .ctrlBarDisContrast .editBGPrimary.editBGFocus, .compact .ctrlBarDisContrast .grid .editBG.editBGFocus {
+box-shadow: inset 0px 0px 0px 1px #c0b283;
+}
+.compact .listItemSelected:not(.listItemSubtle) .editBGPrimary.editBGFocus, .compact .listItemSelected:not(.listItemSubtle) .grid .editBG.editBGFocus, .compact .listItemHover:not(.listItemSubtle) .editBGPrimary.editBGFocus, .compact .listItemHover:not(.listItemSubtle) .grid .editBG.editBGFocus, .compact .gridRowSelected .editBGPrimary.editBGFocus, .compact .gridRowSelected .grid .editBG.editBGFocus, .compact .gridRowHover .editBGPrimary.editBGFocus, .compact .gridRowHover .grid .editBG.editBGFocus {
+box-shadow: inset 0px 0px 0px 1px #fff;
+}
+/* buttons */
+.button, .buttonDD, .buttonSplit {
+color: #c0b283;
+background: transparent;
+font-size: 14px;
+font-weight: bold;
+border: none;
+padding: 9px 15px;
+margin: 0px;
+vertical-align: middle;
+cursor: pointer;
+line-height: 26px;
+border-radius: 0.25rem;
+outline: none;
+}
+.buttonIcon {
+color: #a79344;
+background: transparent;
+font-size: 14px;
+font-weight: bold;
+border: none;
+padding: 9px;
+margin: 0px;
+vertical-align: middle;
+line-height: 26px;
+border-radius: 2px;
+outline: none;
+}
+.buttonRounded {
+color: #fff;
+background: #a79344;
+border-radius: 200px;
+}
+.buttonCircle {
+overflow: hidden;
+width: 44px;
+height: 44px;
+}
+.pulse .button, .pulse .buttonIcon, .pulse .buttonDD, .pulse .buttonSplit {
+position: relative;
+transition: background-color 600ms cubic-bezier(0, 0.8, 1, 0.86);
+}
+.pulse .button:after, .pulse .buttonIcon:after, .pulse .buttonDD:after, .pulse .buttonSplit:after {
+position: absolute;
+top: 0px;
+left: 0px;
+right: 0px;
+bottom: 0px;
+border-radius: 3px;
+box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+content: '';
+transition: box-shadow 600ms;
+pointer-events: none;
+}
+.pulse .button:not(.buttonDisabled):active:after, .pulse .buttonIcon:not(.buttonDisabled):active:after, .pulse .buttonDD:not(.buttonDisabled):active:after, .pulse .buttonSplit:not(.buttonDisabled):active:after {
+box-shadow: inset 0px 0px 0px 44px rgba(255, 255, 255, 0.15);
+transition: none;
+}
+.pulse .buttonRounded:after {
+border-radius: 200px;
+}
+.buttonRaised {
+box-shadow: 0px 3px 12px -2px rgba(0, 0, 0, 0.4);
+}
+.button .icon, .buttonDD .icon, .buttonSplit .icon, .buttonIcon .icon {
+vertical-align: top !important;
+fill: #a79344;
+stroke: #a79344;
+}
+.buttonListPrimary {
+background: #f2f2f2;
+}
+.buttonSecondary {
+font-size: 12px;
+padding: 9px 16px;
+}
+.buttonHover {
+color: #fff;
+background: #cdbe84;
+}
+.buttonPressed, .buttonPrimary {
+color: #fff;
+background: #a79344;
+}
+.buttonHover .icon, .buttonPressed .icon, .buttonPrimary .icon, .buttonRounded:not(.buttonSubtle) .icon {
+fill: #fff;
+stroke: #fff;
+}
+.buttonPrimary.buttonHover {
+color: #fff;
+background: #cdbe84;
+}
+.buttonPrimary.buttonPressed {
+background: #cdbe84;
+border: 2px solid #a79344;
+padding: 7px 13px;
+}
+.buttonPrimary.buttonDisabled, .buttonRounded.buttonDisabled {
+color: #ccc;
+background: #f0f0f0;
+cursor: default;
+}
+.buttonPrimary.buttonDisabled .icon, .buttonPrimary.buttonDisabled .iconDisabled {
+fill: #d9d9d9;
+stroke: #d9d9d9;
+}
+.buttonSubtle {
+color: #5d5d5d;
+background: transparent;
+}
+.buttonSubtle.buttonRounded {
+background: #d9d9d9;
+}
+.buttonSubtle.buttonRaised {
+background: #f7f7f7;
+}
+.buttonSubtle.buttonPressed {
+background: #d9d9d9;
+}
+.buttonSubtle.buttonHover {
+background: #ebebeb;
+}
+.buttonConfirm {
+color: #4caf50;
+border-color: #4caf50;
+}
+.buttonConfirm.buttonHover {
+color: #fff;
+background: #6ec071;
+border-color: #4caf50;
+}
+.buttonConfirm.buttonPressed {
+color: #fff;
+background: #4caf50;
+border-color: #4caf50;
+}
+.buttonConfirm .icon {
+fill: #4caf50;
+stroke: #4caf50;
+}
+.buttonConfirm.buttonHover .icon, .buttonConfirm.buttonPressed .icon {
+fill: #fff;
+stroke: #fff;
+}
+.buttonDeny {
+color: #fb4a4a;
+border-color: #fb4a4a;
+padding: 0.375rem 0.75rem;
+border-radius: 0.25rem;
+}
+.buttonDeny.buttonHover {
+color: #fff;
+background: #fc7c7c;
+border-color: #fb4a4a;
+}
+.buttonDeny.buttonPressed {
+color: #fff;
+background: #fb4a4a;
+border-color: #fb4a4a;
+}
+.buttonDeny .icon {
+fill: #fb4a4a;
+stroke: #fb4a4a;
+}
+.buttonDeny.buttonHover .icon, .buttonDeny.buttonPressed .icon {
+fill: #fff;
+stroke: #fff;
+}
+.buttonIconText {
+font-size: 10px;
+padding-top: 3px;
+padding-bottom: 3px;
+line-height: 12px;
+}
+.buttonLeft {
+text-align: left;
+padding-left: 26px;
+position: relative;
+}
+.buttonLeft:before {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #a79344;
+border-left-style: solid;
+border-left-width: 2px;
+border-left-color: #a79344;
+margin-top: -6px;
+display: inline-block;
+position: absolute;
+top: 50%;
+left: 9px;
+width: 9px;
+height: 9px;
+border-radius: 0.25rem;
+content: '';
+-webkit-transform: rotate(-45deg);
+transform: rotate(-45deg);
+}
+.buttonRight {
+text-align: right;
+padding-right: 26px;
+position: relative;
+}
+.buttonRight:before {
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #a79344;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #a79344;
+margin-top: -6px;
+margin-left: 4px;
+display: inline-block;
+position: absolute;
+top: 50%;
+right: 9px;
+width: 9px;
+height: 9px;
+border-radius: 0.25rem;
+content: '';
+-webkit-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+.buttonHover.buttonLeft:before, .buttonPressed.buttonLeft:before, .buttonHover.buttonRight:before, .buttonPressed.buttonRight:before {
+border-color: #fff;
+}
+.buttonDisabled.buttonLeft:before, .buttonDisabled.buttonRight:before {
+border-color: #cbcbcb;
+}
+.buttonDisabled {
+color: #cbcbcb;
+cursor: default;
+}
+.buttonDisabled .icon, .buttonDisabled .iconDisabled {
+fill: #cbcbcb;
+stroke: #cbcbcb;
+}
+.buttonDD, .buttonSplit {
+padding: 0px;
+}
+.buttonContent {
+color: #a79344;
+font-weight: bold;
+padding: 9px 15px;
+position: relative;
+line-height: 26px;
+}
+.buttonDDArrow {
+padding: 9px 15px;
+line-height: 26px;
+}
+.buttonSplitArrow {
+padding: 9px 15px;
+position: relative;
+line-height: 26px;
+}
+.buttonSplitArrow:after {
+border-left-style: dotted;
+border-left-width: 1px;
+border-left-color: #a79344;
+display: block;
+position: absolute;
+top: 2px;
+left: 0px;
+bottom: 2px;
+content: "";
+}
+.buttonDDArrow:before, .buttonSplitArrow:before {
+border: none;
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #a79344;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #a79344;
+margin-top: -6px;
+display: inline-block;
+width: 8px;
+height: 8px;
+border-radius: 0.25rem;
+content: "";
+-webkit-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+.buttonHover .buttonSplitArrow:after {
+border-color: #fff;
+}
+.buttonHover .buttonContent {
+color: #fff;
+}
+.buttonHover .buttonDDArrow:before, .buttonHover .buttonSplitArrow:before {
+border-color: #fff;
+}
+.buttonPressed .buttonSplitArrow:after {
+border-color: #fff;
+}
+.buttonPressed .buttonContent {
+color: #fff;
+}
+.buttonPressed .buttonDDArrow:before, .buttonPressed .buttonSplitArrow:before {
+border-color: #fff;
+}
+.buttonDisabled .buttonSplitArrow:after {
+border-color: #cbcbcb;
+}
+.buttonDisabled .buttonContent {
+color: #cbcbcb;
+}
+.buttonDisabled .buttonDDArrow:before, .buttonDisabled .buttonSplitArrow:before {
+border-color: #cbcbcb;
+}
+.buttonDisabled .icon, .buttonDisabled .iconDisabled {
+fill: #cbcbcb;
+stroke: #cbcbcb;
+}
+.buttonGroupFirst {
+margin-right: 0px;
+border-radius: 2px 0px 0px 2px;
+}
+.buttonGroupMid {
+border-left-style: none;
+margin-left: 0px;
+margin-right: 0px;
+border-radius: 0px;
+}
+.buttonGroupLast {
+border-left-style: none;
+margin-left: 0px;
+border-radius: 0px 2px 2px 0px;
+}
+.buttonGroupVFirst {
+margin-bottom: 0px;
+display: block;
+width: 100%;
+border-radius: 2px 2px 0px 0px;
+}
+.buttonGroupVMid {
+border-top-style: none;
+margin-top: 0px;
+margin-bottom: 0px;
+display: block;
+width: 100%;
+border-radius: 0px;
+}
+.buttonGroupVLast {
+border-top-style: none;
+margin-top: 0px;
+display: block;
+width: 100%;
+border-radius: 0px 0px 2px 2px;
+}
+.compact .button, .compact .buttonContent, .compact .buttonDDArrow, .compact .buttonSplitArrow {
+font-size: 14px;
+padding: 0.375rem 0.75rem;
+line-height: 18px;
+}
+.compact .buttonDDArrow:before, .compact .buttonSplitArrow:before {
+margin-top: -4px;
+width: 6px;
+height: 6px;
+}
+.compact .buttonIcon {
+font-size: 14px;
+padding: 5px;
+line-height: 18px;
+}
+.compact .buttonIconText {
+font-size: 8px;
+padding-top: 1px;
+padding-bottom: 1px;
+line-height: 8px;
+}
+.compact .buttonCircle {
+overflow: hidden;
+width: 28px;
+height: 28px;
+}
+.compact .buttonSecondary {
+font-size: 12px;
+padding: 5px 8px;
+}
+.compact .buttonPrimary.buttonPressed {
+padding: 3px 5px;
+}
+.compact .buttonLeft {
+padding-left: 18px;
+}
+.compact .buttonLeft:before {
+margin-top: -4px;
+left: 6px;
+width: 6px;
+height: 6px;
+}
+.compact .buttonRight {
+padding-right: 18px;
+}
+.compact .buttonRight:before {
+margin-top: -4px;
+right: 6px;
+width: 6px;
+height: 6px;
+}
+.button .iconButton, .buttonIcon .iconButton {
+padding: 0px;
+}
+/* button overrides for selected list/grid items */
+.listItemSelected .button, .listItemSelected .buttonIcon, .listItemSelected .buttonDD, .listItemSelected .buttonSplit, .listItemHover .button, .listItemHover .buttonIcon, .listItemHover .buttonDD, .listItemHover .buttonSplit, .gridRowSelected .button, .gridRowSelected .buttonIcon, .gridRowSelected .buttonDD, .gridRowSelected .buttonSplit, .gridRowHover .button, .gridRowHover .buttonIcon, .gridRowHover .buttonDD, .gridRowHover .buttonSplit {
+background: #fff;
+}
+.listItemSelected .buttonPrimary, .listItemSelected .buttonCricle, .listItemHover .buttonPrimary, .listItemHover .buttonCricle, .gridRowSelected .buttonPrimary, .gridRowSelected .buttonCricle, .gridRowHover .buttonPrimary, .gridRowHover .buttonCricle {
+background: #a79344;
+}
+.listItemSelected .buttonHover, .listItemHover .buttonHover, .gridRowSelected .buttonHover, .gridRowHover .buttonHover {
+background: #cdbe84;
+}
+.listItemSelected .buttonPressed, .listItemHover .buttonPressed, .gridRowSelected .buttonPressed, .gridRowHover .buttonPressed {
+background: #a79344;
+}
+.listItemSelected .buttonConfirm.buttonHover, .listItemHover .buttonConfirm.buttonHover, .gridRowSelected .buttonConfirm.buttonHover, .gridRowHover .buttonConfirm.buttonHover {
+background: #6ec071;
+}
+.listItemSelected .buttonConfirm.buttonPressed, .listItemHover .buttonConfirm.buttonPressed, .gridRowSelected .buttonConfirm.buttonPressed, .gridRowHover .buttonConfirm.buttonPressed {
+background: #4caf50;
+}
+.listItemSelected .buttonDeny.buttonHover, .listItemHover .buttonDeny.buttonHover, .gridRowSelected .buttonDeny.buttonHover, .gridRowHover .buttonDeny.buttonHover {
+background: #fc7c7c;
+}
+.listItemSelected .buttonDeny.buttonPressed, .listItemHover .buttonDeny.buttonPressed, .gridRowSelected .buttonDeny.buttonPressed, .gridRowHover .buttonDeny.buttonPressed {
+background: #fb4a4a;
+}
+.listItemSelected .buttonDisabled, .listItemHover .buttonDisabled, .gridRowSelected .buttonDisabled, .gridRowHover .buttonDisabled {
+background: rgba(255, 255, 255, 0.75);
+}
+.windowButtons .button {
+border: none;
+margin: 0px;
+border-radius: 0px;
+}
+.panelHeaderAlt .button, .panelHeaderAlt .buttonIcon, .panelHeaderAlt .buttonDD, .panelHeaderAlt .buttonSplit, .panelHeaderAlt .buttonContent, .panelFooterAlt .button, .panelFooterAlt .buttonIcon, .panelFooterAlt .buttonDD, .panelFooterAlt .buttonSplit, .panelFooterAlt .buttonContent, .ctrlBarDis .button, .ctrlBarDis .buttonIcon, .ctrlBarDis .buttonDD, .ctrlBarDis .buttonSplit, .ctrlBarDis .buttonContent {
+color: #373737;
+box-shadow: none;
+}
+.panelHeaderAlt .button .icon, .panelHeaderAlt .buttonIcon .icon, .panelHeaderAlt .buttonDD .icon, .panelHeaderAlt .buttonSplit .icon, .panelHeaderAlt .buttonContent .icon, .panelFooterAlt .button .icon, .panelFooterAlt .buttonIcon .icon, .panelFooterAlt .buttonDD .icon, .panelFooterAlt .buttonSplit .icon, .panelFooterAlt .buttonContent .icon, .ctrlBarDis .button .icon, .ctrlBarDis .buttonIcon .icon, .ctrlBarDis .buttonDD .icon, .ctrlBarDis .buttonSplit .icon, .ctrlBarDis .buttonContent .icon {
+fill: #373737;
+stroke: #373737;
+}
+.panelHeaderAlt .buttonLeft:before, .panelHeaderAlt .buttonRight:before, .panelHeaderAlt .buttonDDArrow:before, .panelHeaderAlt .buttonSplitArrow:before, .panelHeaderAlt .buttonSplitArrow:after, .panelFooterAlt .buttonLeft:before, .panelFooterAlt .buttonRight:before, .panelFooterAlt .buttonDDArrow:before, .panelFooterAlt .buttonSplitArrow:before, .panelFooterAlt .buttonSplitArrow:after, .ctrlBarDis .buttonLeft:before, .ctrlBarDis .buttonRight:before, .ctrlBarDis .buttonDDArrow:before, .ctrlBarDis .buttonSplitArrow:before, .ctrlBarDis .buttonSplitArrow:after {
+border-color: #373737;
+}
+.panelHeaderAlt .button:after, .panelHeaderAlt .buttonIcon:after, .panelHeaderAlt .buttonDD:after, .panelHeaderAlt .buttonSplit:after, .panelFooterAlt .button:after, .panelFooterAlt .buttonIcon:after, .panelFooterAlt .buttonDD:after, .panelFooterAlt .buttonSplit:after, .ctrlBarDis .button:after, .ctrlBarDis .buttonIcon:after, .ctrlBarDis .buttonDD:after, .ctrlBarDis .buttonSplit:after {
+box-shadow: none !important;
+transition: none;
+}
+.panelHeaderContrast .button, .panelHeaderContrast .buttonIcon, .panelHeaderContrast .buttonDD, .panelHeaderContrast .buttonSplit, .panelHeaderContrast .buttonContent, .panelFooterContrast .button, .panelFooterContrast .buttonIcon, .panelFooterContrast .buttonDD, .panelFooterContrast .buttonSplit, .panelFooterContrast .buttonContent, .ctrlBarDisContrast .button, .ctrlBarDisContrast .buttonIcon, .ctrlBarDisContrast .buttonDD, .ctrlBarDisContrast .buttonSplit, .ctrlBarDisContrast .buttonContent {
+color: #373737;
+box-shadow: none;
+}
+.panelHeaderContrast .button .icon, .panelHeaderContrast .buttonIcon .icon, .panelHeaderContrast .buttonDD .icon, .panelHeaderContrast .buttonSplit .icon, .panelHeaderContrast .buttonContent .icon, .panelFooterContrast .button .icon, .panelFooterContrast .buttonIcon .icon, .panelFooterContrast .buttonDD .icon, .panelFooterContrast .buttonSplit .icon, .panelFooterContrast .buttonContent .icon, .ctrlBarDisContrast .button .icon, .ctrlBarDisContrast .buttonIcon .icon, .ctrlBarDisContrast .buttonDD .icon, .ctrlBarDisContrast .buttonSplit .icon, .ctrlBarDisContrast .buttonContent .icon {
+fill: #373737;
+stroke: #373737;
+}
+.panelHeaderContrast .buttonLeft:before, .panelHeaderContrast .buttonRight:before, .panelHeaderContrast .buttonDDArrow:before, .panelHeaderContrast .buttonSplitArrow:before, .panelHeaderContrast .buttonSplitArrow:after, .panelFooterContrast .buttonLeft:before, .panelFooterContrast .buttonRight:before, .panelFooterContrast .buttonDDArrow:before, .panelFooterContrast .buttonSplitArrow:before, .panelFooterContrast .buttonSplitArrow:after, .ctrlBarDisContrast .buttonLeft:before, .ctrlBarDisContrast .buttonRight:before, .ctrlBarDisContrast .buttonDDArrow:before, .ctrlBarDisContrast .buttonSplitArrow:before, .ctrlBarDisContrast .buttonSplitArrow:after {
+border-color: #373737;
+}
+.panelHeaderContrast .button:after, .panelHeaderContrast .buttonIcon:after, .panelHeaderContrast .buttonDD:after, .panelHeaderContrast .buttonSplit:after, .panelFooterContrast .button:after, .panelFooterContrast .buttonIcon:after, .panelFooterContrast .buttonDD:after, .panelFooterContrast .buttonSplit:after, .ctrlBarDisContrast .button:after, .ctrlBarDisContrast .buttonIcon:after, .ctrlBarDisContrast .buttonDD:after, .ctrlBarDisContrast .buttonSplit:after {
+box-shadow: none !important;
+transition: none;
+}
+.panelHeaderAlt .button, .panelHeaderAlt .buttonIcon, .panelHeaderAlt .buttonDD, .panelFooterAlt .button, .panelFooterAlt .buttonIcon, .panelFooterAlt .buttonDD, .ctrlBarDis .button, .ctrlBarDis .buttonIcon, .ctrlBarDis .buttonDD {
+background: transparent;
+vertical-align: top;
+}
+.panelHeaderAlt .button.buttonPressed, .panelHeaderAlt .button.buttonHover, .panelHeaderAlt .buttonDD.buttonPressed, .panelHeaderAlt .buttonDD.buttonHover, .panelHeaderAlt .buttonSplit.buttonPressed, .panelHeaderAlt .buttonSplit.buttonHover, .panelHeaderAlt .buttonPrimary, .panelHeaderAlt .buttonRounded, .panelHeaderAlt .buttonListPrimary, .panelFooterAlt .button.buttonPressed, .panelFooterAlt .button.buttonHover, .panelFooterAlt .buttonDD.buttonPressed, .panelFooterAlt .buttonDD.buttonHover, .panelFooterAlt .buttonSplit.buttonPressed, .panelFooterAlt .buttonSplit.buttonHover, .panelFooterAlt .buttonPrimary, .panelFooterAlt .buttonRounded, .panelFooterAlt .buttonListPrimary, .ctrlBarDis .button.buttonPressed, .ctrlBarDis .button.buttonHover, .ctrlBarDis .buttonDD.buttonPressed, .ctrlBarDis .buttonDD.buttonHover, .ctrlBarDis .buttonSplit.buttonPressed, .ctrlBarDis .buttonSplit.buttonHover, .ctrlBarDis .buttonPrimary, .ctrlBarDis .buttonRounded, .ctrlBarDis .buttonListPrimary {
+color: #a79344;
+background: transparent;
+position: relative;
+}
+.panelHeaderAlt .button.buttonPressed .icon, .panelHeaderAlt .button.buttonHover .icon, .panelHeaderAlt .buttonDD.buttonPressed .icon, .panelHeaderAlt .buttonDD.buttonHover .icon, .panelHeaderAlt .buttonSplit.buttonPressed .icon, .panelHeaderAlt .buttonSplit.buttonHover .icon, .panelHeaderAlt .buttonPrimary .icon, .panelHeaderAlt .buttonRounded .icon, .panelHeaderAlt .buttonListPrimary .icon, .panelFooterAlt .button.buttonPressed .icon, .panelFooterAlt .button.buttonHover .icon, .panelFooterAlt .buttonDD.buttonPressed .icon, .panelFooterAlt .buttonDD.buttonHover .icon, .panelFooterAlt .buttonSplit.buttonPressed .icon, .panelFooterAlt .buttonSplit.buttonHover .icon, .panelFooterAlt .buttonPrimary .icon, .panelFooterAlt .buttonRounded .icon, .panelFooterAlt .buttonListPrimary .icon, .ctrlBarDis .button.buttonPressed .icon, .ctrlBarDis .button.buttonHover .icon, .ctrlBarDis .buttonDD.buttonPressed .icon, .ctrlBarDis .buttonDD.buttonHover .icon, .ctrlBarDis .buttonSplit.buttonPressed .icon, .ctrlBarDis .buttonSplit.buttonHover .icon, .ctrlBarDis .buttonPrimary .icon, .ctrlBarDis .buttonRounded .icon, .ctrlBarDis .buttonListPrimary .icon {
+fill: #a79344;
+stroke: #a79344;
+}
+.panelHeaderAlt .button.buttonPressed:after, .panelHeaderAlt .button.buttonHover:after, .panelHeaderAlt .buttonDD.buttonPressed:after, .panelHeaderAlt .buttonDD.buttonHover:after, .panelHeaderAlt .buttonSplit.buttonPressed:after, .panelHeaderAlt .buttonSplit.buttonHover:after, .panelFooterAlt .button.buttonPressed:after, .panelFooterAlt .button.buttonHover:after, .panelFooterAlt .buttonDD.buttonPressed:after, .panelFooterAlt .buttonDD.buttonHover:after, .panelFooterAlt .buttonSplit.buttonPressed:after, .panelFooterAlt .buttonSplit.buttonHover:after, .ctrlBarDis .button.buttonPressed:after, .ctrlBarDis .button.buttonHover:after, .ctrlBarDis .buttonDD.buttonPressed:after, .ctrlBarDis .buttonDD.buttonHover:after, .ctrlBarDis .buttonSplit.buttonPressed:after, .ctrlBarDis .buttonSplit.buttonHover:after {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #a79344;
+display: block;
+position: absolute;
+left: 13px;
+right: 13px;
+bottom: 7px;
+content: "";
+}
+.panelHeaderAlt .button.buttonHover:after, .panelHeaderAlt .buttonDD.buttonHover:after, .panelHeaderAlt .buttonSplit.buttonHover:after, .panelFooterAlt .button.buttonHover:after, .panelFooterAlt .buttonDD.buttonHover:after, .panelFooterAlt .buttonSplit.buttonHover:after, .ctrlBarDis .button.buttonHover:after, .ctrlBarDis .buttonDD.buttonHover:after, .ctrlBarDis .buttonSplit.buttonHover:after {
+border-bottom-style: dotted;
+}
+.panelHeaderAlt .buttonConfirm, .panelFooterAlt .buttonConfirm, .ctrlBarDis .buttonConfirm {
+color: #4caf50;
+}
+.panelHeaderAlt .buttonConfirm .icon, .panelFooterAlt .buttonConfirm .icon, .ctrlBarDis .buttonConfirm .icon {
+fill: #4caf50;
+stroke: #4caf50;
+}
+.panelHeaderAlt .buttonConfirm.buttonPressed, .panelHeaderAlt .buttonConfirm.buttonHover, .panelFooterAlt .buttonConfirm.buttonPressed, .panelFooterAlt .buttonConfirm.buttonHover, .ctrlBarDis .buttonConfirm.buttonPressed, .ctrlBarDis .buttonConfirm.buttonHover {
+color: #4caf50;
+}
+.panelHeaderAlt .buttonConfirm.buttonPressed .icon, .panelHeaderAlt .buttonConfirm.buttonHover .icon, .panelFooterAlt .buttonConfirm.buttonPressed .icon, .panelFooterAlt .buttonConfirm.buttonHover .icon, .ctrlBarDis .buttonConfirm.buttonPressed .icon, .ctrlBarDis .buttonConfirm.buttonHover .icon {
+fill: #4caf50;
+stroke: #4caf50;
+}
+.panelHeaderAlt .buttonConfirm.buttonPressed:after, .panelHeaderAlt .buttonConfirm.buttonHover:after, .panelFooterAlt .buttonConfirm.buttonPressed:after, .panelFooterAlt .buttonConfirm.buttonHover:after, .ctrlBarDis .buttonConfirm.buttonPressed:after, .ctrlBarDis .buttonConfirm.buttonHover:after {
+border-bottom-color: #4caf50;
+}
+.panelHeaderAlt .buttonDeny, .panelFooterAlt .buttonDeny, .ctrlBarDis .buttonDeny {
+color: #fb3737;
+}
+.panelHeaderAlt .buttonDeny .icon, .panelFooterAlt .buttonDeny .icon, .ctrlBarDis .buttonDeny .icon {
+fill: #fb3737;
+stroke: #fb3737;
+}
+.panelHeaderAlt .buttonDeny.buttonPressed, .panelHeaderAlt .buttonDeny.buttonHover, .panelFooterAlt .buttonDeny.buttonPressed, .panelFooterAlt .buttonDeny.buttonHover, .ctrlBarDis .buttonDeny.buttonPressed, .ctrlBarDis .buttonDeny.buttonHover {
+color: #fb3737;
+}
+.panelHeaderAlt .buttonDeny.buttonPressed .icon, .panelHeaderAlt .buttonDeny.buttonHover .icon, .panelFooterAlt .buttonDeny.buttonPressed .icon, .panelFooterAlt .buttonDeny.buttonHover .icon, .ctrlBarDis .buttonDeny.buttonPressed .icon, .ctrlBarDis .buttonDeny.buttonHover .icon {
+fill: #fb3737;
+stroke: #fb3737;
+}
+.panelHeaderAlt .buttonDeny.buttonPressed:after, .panelHeaderAlt .buttonDeny.buttonHover:after, .panelFooterAlt .buttonDeny.buttonPressed:after, .panelFooterAlt .buttonDeny.buttonHover:after, .ctrlBarDis .buttonDeny.buttonPressed:after, .ctrlBarDis .buttonDeny.buttonHover:after {
+border-bottom-color: #fb3737;
+}
+.panelHeaderAlt .buttonPrimary.buttonPressed, .panelFooterAlt .buttonPrimary.buttonPressed, .ctrlBarDis .buttonPrimary.buttonPressed {
+border-color: transparent;
+}
+.panelHeaderAlt .buttonHover.buttonLeft:before, .panelHeaderAlt .buttonPressed.buttonLeft:before, .panelHeaderAlt .buttonHover.buttonRight:before, .panelHeaderAlt .buttonPressed.buttonRight:before, .panelFooterAlt .buttonHover.buttonLeft:before, .panelFooterAlt .buttonPressed.buttonLeft:before, .panelFooterAlt .buttonHover.buttonRight:before, .panelFooterAlt .buttonPressed.buttonRight:before, .ctrlBarDis .buttonHover.buttonLeft:before, .ctrlBarDis .buttonPressed.buttonLeft:before, .ctrlBarDis .buttonHover.buttonRight:before, .ctrlBarDis .buttonPressed.buttonRight:before {
+border-color: #a79344;
+}
+.panelHeaderAlt .buttonDisabled.buttonLeft:before, .panelHeaderAlt .buttonDisabled.buttonRight:before, .panelFooterAlt .buttonDisabled.buttonLeft:before, .panelFooterAlt .buttonDisabled.buttonRight:before, .ctrlBarDis .buttonDisabled.buttonLeft:before, .ctrlBarDis .buttonDisabled.buttonRight:before {
+border-color: #cbcbcb;
+}
+.panelHeaderAlt .buttonSplitArrow:after, .panelFooterAlt .buttonSplitArrow:after, .ctrlBarDis .buttonSplitArrow:after {
+top: 13px;
+bottom: 13px;
+}
+.panelHeaderAlt .buttonPressed .buttonContent, .panelHeaderAlt .buttonHover .buttonContent, .panelFooterAlt .buttonPressed .buttonContent, .panelFooterAlt .buttonHover .buttonContent, .ctrlBarDis .buttonPressed .buttonContent, .ctrlBarDis .buttonHover .buttonContent {
+color: #a79344;
+}
+.panelHeaderAlt .buttonPressed .buttonDDArrow:before, .panelHeaderAlt .buttonPressed .buttonSplitArrow:before, .panelHeaderAlt .buttonHover .buttonDDArrow:before, .panelHeaderAlt .buttonHover .buttonSplitArrow:before, .panelFooterAlt .buttonPressed .buttonDDArrow:before, .panelFooterAlt .buttonPressed .buttonSplitArrow:before, .panelFooterAlt .buttonHover .buttonDDArrow:before, .panelFooterAlt .buttonHover .buttonSplitArrow:before, .ctrlBarDis .buttonPressed .buttonDDArrow:before, .ctrlBarDis .buttonPressed .buttonSplitArrow:before, .ctrlBarDis .buttonHover .buttonDDArrow:before, .ctrlBarDis .buttonHover .buttonSplitArrow:before {
+border-color: #a79344;
+}
+.panelHeaderAlt .buttonPressed .buttonSplitArrow:after, .panelHeaderAlt .buttonHover .buttonSplitArrow:after, .panelFooterAlt .buttonPressed .buttonSplitArrow:after, .panelFooterAlt .buttonHover .buttonSplitArrow:after, .ctrlBarDis .buttonPressed .buttonSplitArrow:after, .ctrlBarDis .buttonHover .buttonSplitArrow:after {
+border-color: #a79344;
+}
+.panelHeaderAlt .buttonPressed .icon, .panelHeaderAlt .buttonHover .icon, .panelFooterAlt .buttonPressed .icon, .panelFooterAlt .buttonHover .icon, .ctrlBarDis .buttonPressed .icon, .ctrlBarDis .buttonHover .icon {
+fill: #a79344;
+stroke: #a79344;
+}
+.panelHeaderAlt .buttonDisabled, .panelHeaderAlt .buttonDisabled .buttonContent, .panelFooterAlt .buttonDisabled, .panelFooterAlt .buttonDisabled .buttonContent, .ctrlBarDis .buttonDisabled, .ctrlBarDis .buttonDisabled .buttonContent {
+color: #cbcbcb;
+}
+.panelHeaderAlt .buttonDisabled .icon, .panelHeaderAlt .buttonDisabled .buttonContent .icon, .panelFooterAlt .buttonDisabled .icon, .panelFooterAlt .buttonDisabled .buttonContent .icon, .ctrlBarDis .buttonDisabled .icon, .ctrlBarDis .buttonDisabled .buttonContent .icon {
+fill: #cbcbcb;
+stroke: #cbcbcb;
+}
+.panelHeaderAlt .buttonDisabled .buttonDDArrow:after, .panelHeaderAlt .buttonDisabled .buttonSplitArrow:after, .panelFooterAlt .buttonDisabled .buttonDDArrow:after, .panelFooterAlt .buttonDisabled .buttonSplitArrow:after, .ctrlBarDis .buttonDisabled .buttonDDArrow:after, .ctrlBarDis .buttonDisabled .buttonSplitArrow:after {
+border-top-color: #cbcbcb;
+}
+.panelHeaderAlt .buttonDisabled .buttonSplitArrow, .panelFooterAlt .buttonDisabled .buttonSplitArrow, .ctrlBarDis .buttonDisabled .buttonSplitArrow {
+border-color: #cbcbcb;
+}
+.panelHeaderAlt .buttonIcon.buttonHover, .panelFooterAlt .buttonIcon.buttonHover, .ctrlBarDis .buttonIcon.buttonHover {
+color: #cdbe84;
+}
+.panelHeaderAlt .buttonIcon.buttonHover .icon, .panelFooterAlt .buttonIcon.buttonHover .icon, .ctrlBarDis .buttonIcon.buttonHover .icon {
+fill: #cdbe84;
+stroke: #cdbe84;
+}
+.panelHeaderAlt .buttonIcon.buttonPressed, .panelFooterAlt .buttonIcon.buttonPressed, .ctrlBarDis .buttonIcon.buttonPressed {
+color: #a79344;
+}
+.panelHeaderAlt .buttonIcon.buttonPressed .icon, .panelFooterAlt .buttonIcon.buttonPressed .icon, .ctrlBarDis .buttonIcon.buttonPressed .icon {
+fill: #a79344;
+stroke: #a79344;
+}
+.panelHeaderContrast .button, .panelHeaderContrast .buttonIcon, .panelHeaderContrast .buttonDD, .panelFooterContrast .button, .panelFooterContrast .buttonIcon, .panelFooterContrast .buttonDD, .ctrlBarDisContrast .button, .ctrlBarDisContrast .buttonIcon, .ctrlBarDisContrast .buttonDD {
+background: transparent;
+vertical-align: top;
+}
+.panelHeaderContrast .button.buttonPressed, .panelHeaderContrast .button.buttonHover, .panelHeaderContrast .buttonDD.buttonPressed, .panelHeaderContrast .buttonDD.buttonHover, .panelHeaderContrast .buttonSplit.buttonPressed, .panelHeaderContrast .buttonSplit.buttonHover, .panelHeaderContrast .buttonPrimary, .panelHeaderContrast .buttonRounded, .panelHeaderContrast .buttonListPrimary, .panelFooterContrast .button.buttonPressed, .panelFooterContrast .button.buttonHover, .panelFooterContrast .buttonDD.buttonPressed, .panelFooterContrast .buttonDD.buttonHover, .panelFooterContrast .buttonSplit.buttonPressed, .panelFooterContrast .buttonSplit.buttonHover, .panelFooterContrast .buttonPrimary, .panelFooterContrast .buttonRounded, .panelFooterContrast .buttonListPrimary, .ctrlBarDisContrast .button.buttonPressed, .ctrlBarDisContrast .button.buttonHover, .ctrlBarDisContrast .buttonDD.buttonPressed, .ctrlBarDisContrast .buttonDD.buttonHover, .ctrlBarDisContrast .buttonSplit.buttonPressed, .ctrlBarDisContrast .buttonSplit.buttonHover, .ctrlBarDisContrast .buttonPrimary, .ctrlBarDisContrast .buttonRounded, .ctrlBarDisContrast .buttonListPrimary {
+color: #a79344;
+background: transparent;
+position: relative;
+}
+.panelHeaderContrast .button.buttonPressed .icon, .panelHeaderContrast .button.buttonHover .icon, .panelHeaderContrast .buttonDD.buttonPressed .icon, .panelHeaderContrast .buttonDD.buttonHover .icon, .panelHeaderContrast .buttonSplit.buttonPressed .icon, .panelHeaderContrast .buttonSplit.buttonHover .icon, .panelHeaderContrast .buttonPrimary .icon, .panelHeaderContrast .buttonRounded .icon, .panelHeaderContrast .buttonListPrimary .icon, .panelFooterContrast .button.buttonPressed .icon, .panelFooterContrast .button.buttonHover .icon, .panelFooterContrast .buttonDD.buttonPressed .icon, .panelFooterContrast .buttonDD.buttonHover .icon, .panelFooterContrast .buttonSplit.buttonPressed .icon, .panelFooterContrast .buttonSplit.buttonHover .icon, .panelFooterContrast .buttonPrimary .icon, .panelFooterContrast .buttonRounded .icon, .panelFooterContrast .buttonListPrimary .icon, .ctrlBarDisContrast .button.buttonPressed .icon, .ctrlBarDisContrast .button.buttonHover .icon, .ctrlBarDisContrast .buttonDD.buttonPressed .icon, .ctrlBarDisContrast .buttonDD.buttonHover .icon, .ctrlBarDisContrast .buttonSplit.buttonPressed .icon, .ctrlBarDisContrast .buttonSplit.buttonHover .icon, .ctrlBarDisContrast .buttonPrimary .icon, .ctrlBarDisContrast .buttonRounded .icon, .ctrlBarDisContrast .buttonListPrimary .icon {
+fill: #a79344;
+stroke: #a79344;
+}
+.panelHeaderContrast .button.buttonPressed:after, .panelHeaderContrast .button.buttonHover:after, .panelHeaderContrast .buttonDD.buttonPressed:after, .panelHeaderContrast .buttonDD.buttonHover:after, .panelHeaderContrast .buttonSplit.buttonPressed:after, .panelHeaderContrast .buttonSplit.buttonHover:after, .panelFooterContrast .button.buttonPressed:after, .panelFooterContrast .button.buttonHover:after, .panelFooterContrast .buttonDD.buttonPressed:after, .panelFooterContrast .buttonDD.buttonHover:after, .panelFooterContrast .buttonSplit.buttonPressed:after, .panelFooterContrast .buttonSplit.buttonHover:after, .ctrlBarDisContrast .button.buttonPressed:after, .ctrlBarDisContrast .button.buttonHover:after, .ctrlBarDisContrast .buttonDD.buttonPressed:after, .ctrlBarDisContrast .buttonDD.buttonHover:after, .ctrlBarDisContrast .buttonSplit.buttonPressed:after, .ctrlBarDisContrast .buttonSplit.buttonHover:after {
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #a79344;
+display: block;
+position: absolute;
+left: 13px;
+right: 13px;
+bottom: 7px;
+content: "";
+}
+.panelHeaderContrast .button.buttonHover:after, .panelHeaderContrast .buttonDD.buttonHover:after, .panelHeaderContrast .buttonSplit.buttonHover:after, .panelFooterContrast .button.buttonHover:after, .panelFooterContrast .buttonDD.buttonHover:after, .panelFooterContrast .buttonSplit.buttonHover:after, .ctrlBarDisContrast .button.buttonHover:after, .ctrlBarDisContrast .buttonDD.buttonHover:after, .ctrlBarDisContrast .buttonSplit.buttonHover:after {
+border-bottom-style: dotted;
+}
+.panelHeaderContrast .buttonConfirm, .panelFooterContrast .buttonConfirm, .ctrlBarDisContrast .buttonConfirm {
+color: #4caf50;
+}
+.panelHeaderContrast .buttonConfirm .icon, .panelFooterContrast .buttonConfirm .icon, .ctrlBarDisContrast .buttonConfirm .icon {
+fill: #4caf50;
+stroke: #4caf50;
+}
+.panelHeaderContrast .buttonConfirm.buttonPressed, .panelHeaderContrast .buttonConfirm.buttonHover, .panelFooterContrast .buttonConfirm.buttonPressed, .panelFooterContrast .buttonConfirm.buttonHover, .ctrlBarDisContrast .buttonConfirm.buttonPressed, .ctrlBarDisContrast .buttonConfirm.buttonHover {
+color: #4caf50;
+}
+.panelHeaderContrast .buttonConfirm.buttonPressed .icon, .panelHeaderContrast .buttonConfirm.buttonHover .icon, .panelFooterContrast .buttonConfirm.buttonPressed .icon, .panelFooterContrast .buttonConfirm.buttonHover .icon, .ctrlBarDisContrast .buttonConfirm.buttonPressed .icon, .ctrlBarDisContrast .buttonConfirm.buttonHover .icon {
+fill: #4caf50;
+stroke: #4caf50;
+}
+.panelHeaderContrast .buttonConfirm.buttonPressed:after, .panelHeaderContrast .buttonConfirm.buttonHover:after, .panelFooterContrast .buttonConfirm.buttonPressed:after, .panelFooterContrast .buttonConfirm.buttonHover:after, .ctrlBarDisContrast .buttonConfirm.buttonPressed:after, .ctrlBarDisContrast .buttonConfirm.buttonHover:after {
+border-bottom-color: #4caf50;
+}
+.panelHeaderContrast .buttonDeny, .panelFooterContrast .buttonDeny, .ctrlBarDisContrast .buttonDeny {
+color: #fb4a4a;
+}
+.panelHeaderContrast .buttonDeny .icon, .panelFooterContrast .buttonDeny .icon, .ctrlBarDisContrast .buttonDeny .icon {
+fill: #fb4a4a;
+stroke: #fb4a4a;
+}
+.panelHeaderContrast .buttonDeny.buttonPressed, .panelHeaderContrast .buttonDeny.buttonHover, .panelFooterContrast .buttonDeny.buttonPressed, .panelFooterContrast .buttonDeny.buttonHover, .ctrlBarDisContrast .buttonDeny.buttonPressed, .ctrlBarDisContrast .buttonDeny.buttonHover {
+color: #fb4a4a;
+}
+.panelHeaderContrast .buttonDeny.buttonPressed .icon, .panelHeaderContrast .buttonDeny.buttonHover .icon, .panelFooterContrast .buttonDeny.buttonPressed .icon, .panelFooterContrast .buttonDeny.buttonHover .icon, .ctrlBarDisContrast .buttonDeny.buttonPressed .icon, .ctrlBarDisContrast .buttonDeny.buttonHover .icon {
+fill: #fb4a4a;
+stroke: #fb4a4a;
+}
+.panelHeaderContrast .buttonDeny.buttonPressed:after, .panelHeaderContrast .buttonDeny.buttonHover:after, .panelFooterContrast .buttonDeny.buttonPressed:after, .panelFooterContrast .buttonDeny.buttonHover:after, .ctrlBarDisContrast .buttonDeny.buttonPressed:after, .ctrlBarDisContrast .buttonDeny.buttonHover:after {
+border-bottom-color: #fb4a4a;
+}
+.panelHeaderContrast .buttonPrimary.buttonPressed, .panelFooterContrast .buttonPrimary.buttonPressed, .ctrlBarDisContrast .buttonPrimary.buttonPressed {
+border-color: transparent;
+}
+.panelHeaderContrast .buttonHover.buttonLeft:before, .panelHeaderContrast .buttonPressed.buttonLeft:before, .panelHeaderContrast .buttonHover.buttonRight:before, .panelHeaderContrast .buttonPressed.buttonRight:before, .panelFooterContrast .buttonHover.buttonLeft:before, .panelFooterContrast .buttonPressed.buttonLeft:before, .panelFooterContrast .buttonHover.buttonRight:before, .panelFooterContrast .buttonPressed.buttonRight:before, .ctrlBarDisContrast .buttonHover.buttonLeft:before, .ctrlBarDisContrast .buttonPressed.buttonLeft:before, .ctrlBarDisContrast .buttonHover.buttonRight:before, .ctrlBarDisContrast .buttonPressed.buttonRight:before {
+border-color: #a79344;
+}
+.panelHeaderContrast .buttonDisabled.buttonLeft:before, .panelHeaderContrast .buttonDisabled.buttonRight:before, .panelFooterContrast .buttonDisabled.buttonLeft:before, .panelFooterContrast .buttonDisabled.buttonRight:before, .ctrlBarDisContrast .buttonDisabled.buttonLeft:before, .ctrlBarDisContrast .buttonDisabled.buttonRight:before {
+border-color: #cbcbcb;
+}
+.panelHeaderContrast .buttonSplitArrow:after, .panelFooterContrast .buttonSplitArrow:after, .ctrlBarDisContrast .buttonSplitArrow:after {
+top: 13px;
+bottom: 13px;
+}
+.panelHeaderContrast .buttonPressed .buttonContent, .panelHeaderContrast .buttonHover .buttonContent, .panelFooterContrast .buttonPressed .buttonContent, .panelFooterContrast .buttonHover .buttonContent, .ctrlBarDisContrast .buttonPressed .buttonContent, .ctrlBarDisContrast .buttonHover .buttonContent {
+color: #a79344;
+}
+.panelHeaderContrast .buttonPressed .buttonDDArrow:before, .panelHeaderContrast .buttonPressed .buttonSplitArrow:before, .panelHeaderContrast .buttonHover .buttonDDArrow:before, .panelHeaderContrast .buttonHover .buttonSplitArrow:before, .panelFooterContrast .buttonPressed .buttonDDArrow:before, .panelFooterContrast .buttonPressed .buttonSplitArrow:before, .panelFooterContrast .buttonHover .buttonDDArrow:before, .panelFooterContrast .buttonHover .buttonSplitArrow:before, .ctrlBarDisContrast .buttonPressed .buttonDDArrow:before, .ctrlBarDisContrast .buttonPressed .buttonSplitArrow:before, .ctrlBarDisContrast .buttonHover .buttonDDArrow:before, .ctrlBarDisContrast .buttonHover .buttonSplitArrow:before {
+border-color: #a79344;
+}
+.panelHeaderContrast .buttonPressed .buttonSplitArrow:after, .panelHeaderContrast .buttonHover .buttonSplitArrow:after, .panelFooterContrast .buttonPressed .buttonSplitArrow:after, .panelFooterContrast .buttonHover .buttonSplitArrow:after, .ctrlBarDisContrast .buttonPressed .buttonSplitArrow:after, .ctrlBarDisContrast .buttonHover .buttonSplitArrow:after {
+border-color: #a79344;
+}
+.panelHeaderContrast .buttonPressed .icon, .panelHeaderContrast .buttonHover .icon, .panelFooterContrast .buttonPressed .icon, .panelFooterContrast .buttonHover .icon, .ctrlBarDisContrast .buttonPressed .icon, .ctrlBarDisContrast .buttonHover .icon {
+fill: #a79344;
+stroke: #a79344;
+}
+.panelHeaderContrast .buttonDisabled, .panelHeaderContrast .buttonDisabled .buttonContent, .panelFooterContrast .buttonDisabled, .panelFooterContrast .buttonDisabled .buttonContent, .ctrlBarDisContrast .buttonDisabled, .ctrlBarDisContrast .buttonDisabled .buttonContent {
+color: #cbcbcb;
+}
+.panelHeaderContrast .buttonDisabled .icon, .panelHeaderContrast .buttonDisabled .buttonContent .icon, .panelFooterContrast .buttonDisabled .icon, .panelFooterContrast .buttonDisabled .buttonContent .icon, .ctrlBarDisContrast .buttonDisabled .icon, .ctrlBarDisContrast .buttonDisabled .buttonContent .icon {
+fill: #cbcbcb;
+stroke: #cbcbcb;
+}
+.panelHeaderContrast .buttonDisabled .buttonDDArrow:after, .panelHeaderContrast .buttonDisabled .buttonSplitArrow:after, .panelFooterContrast .buttonDisabled .buttonDDArrow:after, .panelFooterContrast .buttonDisabled .buttonSplitArrow:after, .ctrlBarDisContrast .buttonDisabled .buttonDDArrow:after, .ctrlBarDisContrast .buttonDisabled .buttonSplitArrow:after {
+border-top-color: #cbcbcb;
+}
+.panelHeaderContrast .buttonDisabled .buttonSplitArrow, .panelFooterContrast .buttonDisabled .buttonSplitArrow, .ctrlBarDisContrast .buttonDisabled .buttonSplitArrow {
+border-color: #cbcbcb;
+}
+.panelHeaderContrast .buttonIcon.buttonHover, .panelFooterContrast .buttonIcon.buttonHover, .ctrlBarDisContrast .buttonIcon.buttonHover {
+color: #cdbe84;
+}
+.panelHeaderContrast .buttonIcon.buttonHover .icon, .panelFooterContrast .buttonIcon.buttonHover .icon, .ctrlBarDisContrast .buttonIcon.buttonHover .icon {
+fill: #cdbe84;
+stroke: #cdbe84;
+}
+.panelHeaderContrast .buttonIcon.buttonPressed, .panelFooterContrast .buttonIcon.buttonPressed, .ctrlBarDisContrast .buttonIcon.buttonPressed {
+color: #a79344;
+}
+.panelHeaderContrast .buttonIcon.buttonPressed .icon, .panelFooterContrast .buttonIcon.buttonPressed .icon, .ctrlBarDisContrast .buttonIcon.buttonPressed .icon {
+fill: #a79344;
+stroke: #a79344;
+}
+.compact .panelHeaderAlt .button.buttonPressed:after, .compact .panelHeaderAlt .button.buttonHover:after, .compact .panelHeaderAlt .buttonDD.buttonPressed:after, .compact .panelHeaderAlt .buttonDD.buttonHover:after, .compact .panelHeaderAlt .buttonSplit.buttonPressed .buttonContent:after, .compact .panelHeaderAlt .buttonSplit.buttonHover .buttonContent:after, .compact .panelHeaderContrast .button.buttonPressed:after, .compact .panelHeaderContrast .button.buttonHover:after, .compact .panelHeaderContrast .buttonDD.buttonPressed:after, .compact .panelHeaderContrast .buttonDD.buttonHover:after, .compact .panelHeaderContrast .buttonSplit.buttonPressed .buttonContent:after, .compact .panelHeaderContrast .buttonSplit.buttonHover .buttonContent:after, .compact .panelFooterAlt .button.buttonPressed:after, .compact .panelFooterAlt .button.buttonHover:after, .compact .panelFooterAlt .buttonDD.buttonPressed:after, .compact .panelFooterAlt .buttonDD.buttonHover:after, .compact .panelFooterAlt .buttonSplit.buttonPressed .buttonContent:after, .compact .panelFooterAlt .buttonSplit.buttonHover .buttonContent:after, .compact .panelFooterContrast .button.buttonPressed:after, .compact .panelFooterContrast .button.buttonHover:after, .compact .panelFooterContrast .buttonDD.buttonPressed:after, .compact .panelFooterContrast .buttonDD.buttonHover:after, .compact .panelFooterContrast .buttonSplit.buttonPressed .buttonContent:after, .compact .panelFooterContrast .buttonSplit.buttonHover .buttonContent:after, .compact .ctrlBarDis .button.buttonPressed:after, .compact .ctrlBarDis .button.buttonHover:after, .compact .ctrlBarDis .buttonDD.buttonPressed:after, .compact .ctrlBarDis .buttonDD.buttonHover:after, .compact .ctrlBarDis .buttonSplit.buttonPressed .buttonContent:after, .compact .ctrlBarDis .buttonSplit.buttonHover .buttonContent:after, .compact .ctrlBarDisContrast .button.buttonPressed:after, .compact .ctrlBarDisContrast .button.buttonHover:after, .compact .ctrlBarDisContrast .buttonDD.buttonPressed:after, .compact .ctrlBarDisContrast .buttonDD.buttonHover:after, .compact .ctrlBarDisContrast .buttonSplit.buttonPressed .buttonContent:after, .compact .ctrlBarDisContrast .buttonSplit.buttonHover .buttonContent:after {
+left: 6px;
+right: 6px;
+bottom: 4px;
+}
+.compact .panelHeaderAlt .buttonSplitArrow:after, .compact .panelHeaderContrast .buttonSplitArrow:after, .compact .panelFooterAlt .buttonSplitArrow:after, .compact .panelFooterContrast .buttonSplitArrow:after, .compact .ctrlBarDis .buttonSplitArrow:after, .compact .ctrlBarDisContrast .buttonSplitArrow:after {
+top: 9px;
+bottom: 9px;
+}
+/* grid */
+.grid {
+color: #373737;
+background: #fff;
+border: 1px solid #d9d9d9;
+border-spacing: 0px;
+border-radius: 0.25rem;
+}
+.gridDetailTest {
+color: red;
+background: yellow;
+border-spacing: 0px;
+}
+.gridHeader {
+color: #373737;
+background: #f7f7f7;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d9d9d9;
+padding: 2px;
+line-height: 28px;
+}
+.gridFooter {
+background: #f7f7f7;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #d9d9d9;
+padding: 2px;
+line-height: 28px;
+}
+.gridQBE {
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #ebebeb;
+padding: 4px;
+}
+.gridData, .gridDataAlt, .gridDataError, .gridSumData {
+padding: 7px;
+}
+.gridDataAlt {
+background: #fafafa;
+}
+.gridDataError {
+color: #ff351c;
+background: #ffebe8;
+}
+.gridDataError .icon {
+stroke: #ff351c;
+fill: #ff351c;
+}
+.gridDataHeader {
+color: #909090;
+background: #f7f7f7;
+font-size: 12px;
+font-weight: bold;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #ebebeb;
+padding: 2px;
+}
+.gridRowHeader, .gridSumLabel {
+color: #373737;
+background: #f7f7f7;
+font-size: 14px;
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #d9d9d9;
+padding: 9px 15px;
+}
+.gridSep {
+background: #ebebeb;
+font-size: 0px;
+padding: 0px;
+height: 1px;
+}
+.gridSumData, .gridSumLabel {
+background: #fafafa;
+}
+.gridRowHover .gridData, .gridRowHover .gridDataAlt, .gridRowSelected .gridData, .gridRowSelected .gridDataAlt {
+color: #373737;
+background: #f7f9fa;
+}
+.gridRowHover .icon, .gridRowSelected .icon {
+fill: #fff;
+stroke: #fff;
+}
+.gridRowHover .edit, .gridRowHover .editBG, .gridRowHover .editBGPrimary, .gridRowSelected .edit, .gridRowSelected .editBG, .gridRowSelected .editBGPrimary {
+color: #373737;
+background: #fff;
+border-color: #fff !important;
+}
+.gridRowHover .editBGEdit, .gridRowSelected .editBGEdit {
+color: #373737;
+}
+.gridRowSelected .gridData, .gridRowSelected .gridDataAlt {
+background: #fffdf6;
+}
+.grid .link {
+font-weight: bold;
+padding: 5px 7px;
+display: inline-block;
+line-height: 18px;
+border-radius: 0.25rem;
+}
+.grid .link .iconButton {
+padding: 0px;
+}
+.grid .link:hover {
+text-decoration: none;
+color: #fff;
+background: #cdbe84;
+}
+.grid .link:hover .icon {
+fill: #fff;
+stroke: #fff;
+}
+.gridRowSelected .link, .gridRowHover .link {
+background: #fff;
+}
+.gridHeader .link, .gridNav .link {
+color: #373737;
+padding: 9px;
+}
+.gridHeader .link:hover, .gridNav .link:hover {
+color: #a79344;
+background: transparent;
+}
+.gridHeader .link:hover .icon, .gridNav .link:hover .icon {
+fill: #a79344;
+stroke: #a79344;
+}
+.gridDetail .gridHeader, .gridDetail .gridFooter {
+background: transparent;
+border: none;
+}
+.compact .gridHeader, .compact .gridFooter {
+padding: 2px;
+line-height: 28px;
+}
+.compact .gridData, .compact .gridDataAlt, .compact .gridDataError, .compact .gridSumData, .compact .gridSumLabel {
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #e5e5e5;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #e5e5e5;
+padding: 4px;
+}
+.compact .gridRowHeader, .compact .gridSumLabel {
+font-size: 14px;
+padding: 6px 8px;
+}
+.compact .gridDataHeader {
+font-size: 12px;
+}
+.compact .grid .link {
+padding: 5px 7px;
+line-height: 18px;
+}
+/* ux */
+.label {
+color: #747474;
+font-size: 12px;
+font-weight: bold;
+padding: 4px;
+}
+.panelHeaderAlt .label, .panelFooterAlt .label, .ctrlBarDis .label {
+color: #9b9b9b;
+}
+.listItemSelected .label, .listItemHover .label, .gridRowSelected .label, .gridRowHover .label {
+color: #373737;
+}
+.uxRSRow {
+padding-left: 4px;
+}
+.uxRSHeader {
+color: #686868;
+background-color: #ebebeb;
+font-size: 12px;
+font-weight: bold;
+border: 1px solid #dddddd;
+padding-top: 8px;
+}
+.uxRSFooter {
+text-align: right;
+padding: 4px;
+}
+.uxRSRowSelected {
+background: #fffdf6;
+border-left-style: solid;
+border-left-width: 4px;
+border-left-color: #c0b283;
+padding-left: 0px;
+}
+.uxRSRowHover {
+background-color: rgba(235, 235, 235, 0.5);
+}
+.uxRSRowError {
+color: #ff351c;
+background: #ffebe8;
+}
+.uxRSRowError .icon {
+stroke: #ff351c;
+fill: #ff351c;
+}
+.uxRSRowSep {
+background: #ebebeb;
+font-size: 0px;
+height: 1px;
+}
+.uxRSRowSelected .icon, .uxRSRowHover .icon {
+fill: #373737;
+stroke: #fff;
+}
+.compact .label, .compact .uxRSHeader {
+font-size: 12px;
+}
+.compact .labelStandard {
+color: #373737;
+font-size: 14px;
+}
+/* list */
+.list {
+border: 1px solid #d9d9d9;
+border-radius: 0.25rem;
+}
+.listHeader {
+background: #f7f7f7;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d9d9d9;
+padding: 9px 15px;
+line-height: 26px;
+}
+.listFooter {
+background: #f7f7f7;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #d9d9d9;
+padding: 9px 15px;
+line-height: 26px;
+}
+.listColHeader {
+background-color: #f4f4f4;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d9d9d9;
+padding: 0px 15px;
+cursor: default;
+}
+.listColHeader .icon {
+vertical-align: top;
+}
+.listColHeaderItem {
+color: #565551;
+font-weight: bold;
+padding: 9px 15px;
+cursor: pointer;
+line-height: 26px;
+}
+.listColHeaderItemHover {
+background: #ebebeb;
+transition: 0.3s;
+}
+.listColHeaderItemResize {
+background: rgba(0, 0, 0, 0.1);
+}
+.listItem {
+background: #fff;
+padding: 15px;
+cursor: default;
+}
+.listItemLined {
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+margin-top: -1px;
+}
+.listItemHover {
+color: $accentForeColor;
+background: #d1c7a5;
+}
+.listItemSelected {
+color: $accentForeColor;
+background: #c0b283;
+}
+.pulse .listItem {
+box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+transition: background-color 300ms cubic-bezier(0, 0.8, 1, 0.86), box-shadow 600ms;
+}
+.pulse .listItem:active {
+box-shadow: inset 0px 0px 0px 44px rgba(255, 255, 255, 0.15);
+transition: none;
+}
+.pulse .listDisabled .listItem {
+box-shadow: none;
+}
+.listItemHover .icon, .listItemSelected .icon {
+fill: #fff;
+stroke: #fff;
+}
+.listItemHover.listItemLined, .listItemSelected.listItemLined {
+border-top-color: #d1c7a5;
+}
+.listItemSubtle.listItemHover {
+color: #373737;
+background: #f7f7f7;
+}
+.listItemSubtle.listItemSelected {
+color: #373737;
+background: #EBEBEB;
+}
+.listItemSubtle.listItemHover .icon, .listItemSubtle.listItemSelected .icon {
+fill: #373737;
+stroke: #373737;
+}
+.listItemSubtle.listItemLined, .listItemSelected.listItemLined {
+border-top-color: #ebebeb;
+}
+.listItemTitle {
+color: #909090;
+background: #fafafa;
+font-size: 12px;
+font-weight: bold;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #ebebeb;
+padding: 4px 15px;
+margin-top: -1px;
+}
+.listItemSep {
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+}
+.listItemPartMain {
+font-weight: bold;
+}
+.listItemPartSub {
+font-size: 12px;
+}
+.listItemPartContext {
+color: #c0b283;
+font-size: 12px;
+}
+.listItemPartDetail {
+color: #fff;
+background: rgba(55, 55, 55, 0.35);
+font-size: 12px;
+padding: 2px 6px;
+border-radius: 0.25rem;
+}
+.listItemPartContent {
+color: #cbcbcb;
+font-size: 12px;
+}
+.listItemHover:not(.listItemSubtle) .listItemPartContext, .listItemHover:not(.listItemSubtle) .listItemPartContent, .listItemSelected:not(.listItemSubtle) .listItemPartContext, .listItemSelected:not(.listItemSubtle) .listItemPartContent {
+color: #373737;
+}
+.listItemData {
+padding: 0px 15px;
+}
+.listNav {
+text-align: center;
+color: #fff;
+background: rgba(55, 55, 55, 0.5);
+padding: 4px;
+cursor: default;
+border-radius: 2px;
+text-overflow: ellipsis;
+}
+.listNavButtonNext {
+text-align: center;
+color: #c0b283;
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+padding: 9px 15px;
+cursor: pointer;
+line-height: 26px;
+}
+.listNavButtonNext:hover {
+color: #896d14;
+background-color: #f9f7ed;
+transition: 0.3s;
+}
+.listNavButtonPrev {
+text-align: center;
+color: #c0b283;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #ebebeb;
+padding: 9px 15px;
+cursor: pointer;
+line-height: 26px;
+}
+.listNavButtonPrev:hover {
+color: #896d14;
+background-color: #f9f7ed;
+transition: 0.3s;
+}
+.listNavButtonPressed {
+color: #fff;
+background: #c0b283;
+}
+.listFocus {
+border-color: #cfc9b6;
+}
+.listDisabled {
+color: #909090;
+border-color: #ebebeb;
+}
+.listDisabled .listColHeader {
+border-color: #ebebeb;
+}
+.listDisabled .listItemSelected {
+color: #909090;
+background: #f2f2f2;
+border-top-color: #ebebeb;
+}
+.listDisabled .listItemSelected.listItemSubtle {
+background: #fafafa;
+}
+.listDisabled .listColHeaderItemHover, .listDisabled .listItemHover {
+color: #909090;
+background: #fff;
+border-top-color: #ebebeb;
+}
+.listDisabled .listItemPartMain, .listDisabled .listItemPartSub, .listDisabled .listItemPartContext, .listDisabled .listItemPartContent {
+color: #909090;
+}
+.listDisabled .icon {
+fill: #909090;
+stroke: #909090;
+}
+.compact .listColHeader {
+padding: 0px 7px;
+}
+.compact .listHeader, .compact .listFooter, .compact .listColHeaderItem, .compact .listNavButtonNext, .compact .listNavButtonPrev {
+padding: 12px 7px;
+line-height: 18px;
+}
+.compact .listItem {
+padding: 7px;
+}
+.compact .listItemTitle {
+font-size: 12px;
+padding: 4px 7px;
+}
+.compact .listItemPartSub, .compact .listItemPartContext, .compact .listItemPartDetail, .compact .listItemPartContent {
+font-size: 12px;
+}
+.compact .listItemData {
+padding: 0px 7px;
+}
+.compact .iconPadding {
+padding-left: 4px;
+}
+/* tree */
+.tree {
+background: #fff;
+border: 1px solid #d9d9d9;
+cursor: default;
+border-radius: 2px;
+}
+.treeFocus {
+border-color: #cfc9b6;
+}
+.treeItem {
+display: flex;
+overflow: hidden;
+}
+.pulse .treeItem {
+box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+transition: background-color 300ms cubic-bezier(0, 0.8, 1, 0.86), box-shadow 600ms;
+}
+.pulse .treeItem:active {
+box-shadow: inset 0px 0px 0px 44px rgba(255, 255, 255, 0.15);
+transition: none;
+}
+.pulse .treeDisabled .treeItem {
+box-shadow: none;
+}
+.treeItemLabel {
+text-decoration: none;
+color: inherit;
+padding: 9px;
+display: inline-block;
+cursor: default;
+line-height: 26px;
+outline: none;
+flex-grow: 1;
+}
+.treeItemHover {
+color: #fff;
+background: #d1c7a5;
+}
+.treeItemHover .icon {
+fill: #fff;
+stroke: #fff;
+}
+.treeItemSelected {
+color: #fff;
+background: #c0b283;
+}
+.treeItemSelected .icon {
+fill: #fff;
+stroke: #fff;
+}
+.treeDisabled {
+color: #909090;
+border-color: #ebebeb;
+}
+.treeDisabled .icon {
+fill: #909090;
+stroke: #909090;
+}
+.treeDisabled .treeItemSelected {
+color: #909090;
+background: #f2f2f2;
+}
+.treeDisabled .treeItemHover {
+color: #909090;
+background: transparent;
+}
+.compact .treeItemLabel {
+padding: 5px;
+line-height: 18px;
+}
+/* spin list */
+.spinList {
+color: #373737;
+background: #fff;
+border: 1px solid #d9d9d9;
+cursor: default;
+border-radius: 2px;
+}
+.spinList:before {
+background: url("spinListBack.png");
+background-size: 100% 100%;
+display: block;
+position: absolute;
+top: 0px;
+left: 0px;
+right: 0px;
+bottom: 0px;
+z-index: 2;
+content: "";
+}
+.spinList:after {
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #ebebeb;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #ebebeb;
+margin-top: -14.5px;
+display: block;
+position: absolute;
+top: 50%;
+left: 0px;
+right: 0px;
+height: 29px;
+z-index: 3;
+content: "";
+}
+.spinListGroup {
+white-space: nowrap;
+}
+.spinListGroup .spinList {
+border-left-color: #ebebeb;
+border-right-style: none;
+display: inline-block;
+border-radius: 0px;
+}
+.spinListGroup .spinList:last-child {
+border-right-style: solid;
+border-radius: 0px 2px 2px 0px;
+}
+.spinListGroup .spinList:first-child {
+border-left-color: #d9d9d9;
+border-radius: 2px 0px 0px 2px;
+}
+.spinListDisabled {
+color: #909090;
+border-color: #ebebeb;
+}
+.spinListGroup .spinListDisabled:first-child {
+border-left-color: #ebebeb;
+}
+.spinListItem {
+white-space: nowrap;
+padding: 7.5px 15px;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+.compact .spinListItem {
+padding: 7px;
+}
+.compact .spinList:after {
+margin-top: -14px;
+height: 28px;
+}
+/* date picker */
+.datePicker {
+color: #373737;
+background: #fff;
+border-radius: 2px;
+}
+.datePicker .icon {
+fill: #373737;
+stroke: #373737;
+}
+.datePickerDOW {
+color: #909090;
+font-size: 12px;
+}
+.datePickerWOY {
+color: #909090;
+font-size: 12px;
+}
+.datePickerHeaderItem {
+text-decoration: none;
+color: #c0b283;
+font-weight: bold;
+padding: 9px 15px;
+display: inline-block;
+cursor: default;
+line-height: 26px;
+border-radius: 2px;
+outline: none;
+}
+.datePickerDate {
+padding: 1px;
+}
+.datePickerItem {
+text-align: center;
+text-decoration: none;
+color: #373737;
+padding: 9px 15px;
+display: block;
+cursor: default;
+line-height: 26px;
+border-radius: 2px;
+outline: none;
+}
+.pulse .datePickerItem, .pulse .datePickerHeaderItem {
+box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+transition: background-color 300ms cubic-bezier(0, 0.8, 1, 0.86), box-shadow 600ms;
+}
+.pulse .datePickerItem:not(.datePickerItemDisabled):active, .pulse .datePickerHeaderItem:active {
+box-shadow: inset 0px 0px 0px 44px rgba(255, 255, 255, 0.15);
+transition: none;
+}
+.pulse .datePickerDisabled .datePickerItem {
+box-shadow: none;
+}
+.datePickerDateToday .datePickerItem {
+color: #c0b283;
+}
+.datePickerItemHover, .datePickerDateToday .datePickerItemHover, .datePickerHeaderItemHover {
+color: #fff;
+background: #d1c7a5;
+}
+.datePickerItemSelected, .datePickerDateToday .datePickerItemSelected, .datePickerHeaderItemSelected {
+color: #fff;
+background: #c0b283;
+}
+.datePickerItemOOR {
+color: #909090;
+}
+.datePickerItemDisabled {
+color: #cbcbcb;
+}
+.datePickerDisabled .icon {
+fill: #909090;
+stroke: #909090;
+}
+.datePickerDisabled .datePickerHeaderItem, .datePickerDisabled .datePickerItem {
+color: #909090;
+}
+.datePickerDisabled .datePickerDateToday .datePickerItem {
+color: #909090;
+}
+.datePickerDisabled .datePickerItemHover, .datePickerDisabled .datePickerDateToday .datePickerItemHover, .datePickerDisabled .datePickerHeaderItemHover {
+color: #909090;
+background: transparent;
+}
+.datePickerDisabled .datePickerItemSelected, .datePickerDisabled .datePickerDateToday .datePickerItemSelected, .datePickerDisabled .datePickerHeaderItemSelected {
+color: #909090;
+background: transparent;
+}
+.compact .datePickerItem, .compact .datePickerHeaderItem {
+font-size: 14px;
+padding: 5px 7px;
+line-height: 18px;
+}
+.compact .datePickerDOW, .compact .datePickerWOY {
+font-size: 12px;
+}
+/* time picker */
+.timePickerMeridian {
+text-decoration: none;
+color: #c0b283;
+font-weight: bold;
+padding: 15px;
+cursor: default;
+border-radius: 2px;
+outline: none;
+}
+.timePickerMeridian:hover {
+color: #fff;
+background: #c0b283;
+}
+.timePickerButton {
+text-align: center;
+text-decoration: none;
+color: #c0b283;
+padding: 15px;
+display: block;
+cursor: default;
+border-radius: 2px;
+outline: none;
+}
+.timePickerButton:hover {
+color: #fff;
+background: #c0b283;
+}
+.timePickerButton:after {
+border-right-style: solid;
+border-right-width: 2px;
+border-right-color: #909090;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #909090;
+margin-top: -4px;
+display: inline-block;
+position: relative;
+width: 9px;
+height: 9px;
+border-radius: 2px;
+content: "";
+-webkit-transform: rotate(45deg);
+transform: rotate(45deg);
+}
+.timePickerButton:hover:after {
+border-color: #fff;
+}
+.timePickerDisabled .edit, .timePickerDisabled .timePickerMeridian, .timePickerDisabled .timePickerButton, .timePickerDisabled .timePickerButton:after, .timePickerDisabled .timePickerButton:hover:after {
+color: #cbcbcb;
+background: transparent;
+border-color: #cbcbcb;
+}
+.listItemSelected .timePickerButton:after, .listItemHover .timePickerButton:after, .gridRowSelected .timePickerButton:after, .gridRowHover .timePickerButton:after {
+border-color: #fff;
+}
+.listItemSelected .timePickerButton:hover:after, .listItemHover .timePickerButton:hover:after, .gridRowSelected .timePickerButton:hover:after, .gridRowHover .timePickerButton:hover:after {
+border-color: #c0b283;
+}
+.listItemSelected .timePickerButton:hover, .listItemHover .timePickerButton:hover, .gridRowSelected .timePickerButton:hover, .gridRowHover .timePickerButton:hover {
+background: #fff;
+}
+.listItemSelected .timePickerMeridian, .listItemHover .timePickerMeridian, .gridRowSelected .timePickerMeridian, .gridRowHover .timePickerMeridian {
+color: #fff;
+}
+.listItemSelected .timePickerMeridian:hover, .listItemHover .timePickerMeridian:hover, .gridRowSelected .timePickerMeridian:hover, .gridRowHover .timePickerMeridian:hover {
+color: #c0b283;
+background: #fff;
+}
+.listItemSelected .timePickerDisabled .edit, .listItemSelected .timePickerDisabled .timePickerMeridian, .listItemSelected .timePickerDisabled .timePickerButton, .listItemSelected .timePickerDisabled .timePickerButton:after, .listItemSelected .timePickerDisabled .timePickerButton:hover:after, .listItemHover .timePickerDisabled .edit, .listItemHover .timePickerDisabled .timePickerMeridian, .listItemHover .timePickerDisabled .timePickerButton, .listItemHover .timePickerDisabled .timePickerButton:after, .listItemHover .timePickerDisabled .timePickerButton:hover:after, .gridRowSelected .timePickerDisabled .edit, .gridRowSelected .timePickerDisabled .timePickerMeridian, .gridRowSelected .timePickerDisabled .timePickerButton, .gridRowSelected .timePickerDisabled .timePickerButton:after, .gridRowSelected .timePickerDisabled .timePickerButton:hover:after, .gridRowHover .timePickerDisabled .edit, .gridRowHover .timePickerDisabled .timePickerMeridian, .gridRowHover .timePickerDisabled .timePickerButton, .gridRowHover .timePickerDisabled .timePickerButton:after, .gridRowHover .timePickerDisabled .timePickerButton:hover:after {
+color: rgba(255, 255, 255, 0.75);
+background: transparent;
+border-color: rgba(255, 255, 255, 0.75);
+}
+.compact .timePickerMeridian, .compact .timePickerButton {
+font-size: 14px;
+padding: 7px;
+}
+.compact .timePickerButton:after {
+margin-top: -3px;
+width: 6px;
+height: 6px;
+}
+/* slider */
+.slider {
+padding: 20px;
+cursor: pointer;
+height: 44px;
+box-sizing: border-box;
+}
+.sliderInner {
+background: #d9d9d9;
+height: 4px;
+border-radius: 2px;
+}
+.sliderRange {
+background: #d1c7a5;
+margin-top: -1px;
+height: 6px;
+border-radius: 3px;
+}
+.sliderHandle {
+background: #fff;
+border: 1px solid #d9d9d9;
+margin-top: -22px;
+margin-left: -22px;
+width: 44px;
+height: 44px;
+border-radius: 24px;
+}
+.sliderRangeHover {
+background: #c0b283;
+}
+.sliderHandleHover {
+background: #d1c7a5;
+border-color: #c0b283;
+}
+.sliderRangeSelected {
+background: #c0b283;
+}
+.sliderHandleSelected {
+background: #c0b283;
+border-color: #c0b283;
+}
+.pulse .sliderHandle {
+box-shadow: inset 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+transition: background-color 300ms cubic-bezier(0, 0.8, 1, 0.86), box-shadow 600ms;
+}
+.pulse .sliderHandle:active {
+box-shadow: inset 0px 0px 0px 44px rgba(255, 255, 255, 0.15);
+transition: none;
+}
+.sliderDisabled .sliderHandle {
+background: #fff;
+border-color: #ebebeb;
+box-shadow: none !important;
+}
+.sliderDisabled .sliderRange, .sliderDisabled .sliderInner {
+background: #ebebeb;
+}
+.listItemSelected .sliderInner, .listItemHover .sliderInner, .gridRowSelected .sliderInner, .gridRowHover .sliderInner {
+background: rgba(255, 255, 255, 0.75);
+}
+.listItemSelected .sliderRange, .listItemHover .sliderRange, .gridRowSelected .sliderRange, .gridRowHover .sliderRange {
+background: rgba(255, 255, 255, 0.75);
+}
+.listItemSelected .sliderHandle, .listItemHover .sliderHandle, .gridRowSelected .sliderHandle, .gridRowHover .sliderHandle {
+background: #d1c7a5;
+border-color: #fff;
+}
+.listItemSelected .sliderHandleHover, .listItemHover .sliderHandleHover, .gridRowSelected .sliderHandleHover, .gridRowHover .sliderHandleHover {
+background: #fff;
+border-color: rgba(255, 255, 255, 0.75);
+}
+.listItemSelected .sliderHandleSelected, .listItemHover .sliderHandleSelected, .gridRowSelected .sliderHandleSelected, .gridRowHover .sliderHandleSelected {
+background: #fff;
+}
+.listItemSelected .sliderDisabled.slider, .listItemHover .sliderDisabled.slider, .gridRowSelected .sliderDisabled.slider, .gridRowHover .sliderDisabled.slider {
+opacity: .4;
+}
+.listItemSelected .sliderDisabled .sliderHandle, .listItemHover .sliderDisabled .sliderHandle, .gridRowSelected .sliderDisabled .sliderHandle, .gridRowHover .sliderDisabled .sliderHandle {
+background: #d1c7a5;
+border-color: rgba(255, 255, 255, 0.75);
+}
+.listItemSelected .sliderDisabled .sliderRange, .listItemHover .sliderDisabled .sliderRange, .gridRowSelected .sliderDisabled .sliderRange, .gridRowHover .sliderDisabled .sliderRange {
+background: transparent;
+}
+.listItemSelected .sliderDisabled .sliderInner, .listItemHover .sliderDisabled .sliderInner, .gridRowSelected .sliderDisabled .sliderInner, .gridRowHover .sliderDisabled .sliderInner {
+background: rgba(255, 255, 255, 0.75);
+}
+.compact .slider {
+height: 28px;
+}
+.compact .sliderInner {
+margin: 12px;
+height: 2px;
+}
+.compact .sliderRange {
+height: 4px;
+}
+.compact .sliderHandle {
+margin-top: -14px;
+margin-left: -14px;
+width: 28px;
+height: 28px;
+}
+/* switch */
+.switch {
+color: #909090;
+background: #f2f2f2;
+border: 1px solid #d9d9d9;
+cursor: pointer;
+height: 44px;
+border-radius: 22px;
+}
+.pulse .switch {
+transition: background-color 400ms cubic-bezier(0, 0.8, 1, 0.86);
+}
+.switchInner {
+margin-left: 22px;
+margin-right: 21px;
+}
+.switchButton {
+background: #fff;
+border: 1px solid #d9d9d9;
+margin: 1px;
+margin-left: -20.5px;
+width: 38px;
+height: 38px;
+border-radius: 22px;
+}
+.switchOn {
+color: #fff;
+background: #c0b283;
+border-color: #c0b283;
+}
+.switchOn .switchButton {
+border-color: #fff;
+}
+.switchLeft {
+text-align: center;
+padding-right: 24px;
+line-height: 42px;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+}
+.switchRight {
+text-align: center;
+padding-left: 24px;
+line-height: 42px;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+-webkit-box-sizing: border-box;
+}
+.switchDisabled.switch {
+color: #cbcbcb;
+background: #f7f7f7;
+border: 1px solid #ebebeb;
+}
+.switchDisabled .switchButton {
+border: 1px solid #ebebeb;
+}
+.switchDisabled.switchOn {
+color: #cbcbcb;
+background: #ebebeb;
+border-color: #ebebeb;
+}
+.listItemSelected .switch, .listItemHover .switch, .gridRowSelected .switch, .gridRowHover .switch {
+background: transparent;
+border-color: #fff;
+}
+.listItemSelected .switchOn, .listItemHover .switchOn, .gridRowSelected .switchOn, .gridRowHover .switchOn {
+background: #fff;
+}
+.listItemSelected .switchButton, .listItemHover .switchButton, .gridRowSelected .switchButton, .gridRowHover .switchButton {
+background: rgba(255, 255, 255, 0.75);
+border-color: #fff;
+}
+.listItemSelected .switchOn .switchButton, .listItemHover .switchOn .switchButton, .gridRowSelected .switchOn .switchButton, .gridRowHover .switchOn .switchButton {
+background: #c0b283;
+border-color: #d1c7a5;
+}
+.listItemSelected .switchDisabled, .listItemHover .switchDisabled, .gridRowSelected .switchDisabled, .gridRowHover .switchDisabled {
+opacity: .5;
+}
+.compact .switch {
+height: 28px;
+border-radius: 14px;
+}
+.compact .switchInner {
+margin-left: 14px;
+margin-right: 12px;
+}
+.compact .switchButton {
+margin-left: -13px;
+width: 22px;
+height: 22px;
+border-radius: 14px;
+}
+.compact .switchLeft {
+padding-left: 16px;
+line-height: 26px;
+}
+.compact .switchRight {
+padding-right: 16px;
+line-height: 26px;
+}
+/* ink */
+.ink {
+border: 1px solid #d9d9d9;
+border-radius: 2px;
+}
+.inkArea {
+background: #f7f7f7;
+}
+.inkPage {
+background: #fff;
+border: 1px solid #d9d9d9;
+box-shadow: 0px 3px 3px #f2f2f2;
+-moz-box-shadow: 0px 3px 3px #f2f2f2;
+-webkit-box-shadow: 0px 3px 3px #f2f2f2;
+}
+.inkZoomBox {
+border: 1px dotted #c0b283;
+}
+.inkZoomBoxScale:after {
+border: 5px solid transparent;
+border-right-color: rgba(192, 178, 131, 0.5);
+border-bottom-color: rgba(192, 178, 131, 0.5);
+display: block;
+position: absolute;
+right: 2px;
+bottom: 2px;
+content: "";
+}
+.inkSplitBar {
+background: #d9d9d9;
+}
+.inkEraser {
+background: rgba(255, 100, 150, 0.1);
+border: 1px solid rgba(255, 100, 150, 0.5);
+border-radius: 2px;
+}
+.inkButton {
+text-align: center;
+color: #373737;
+background: rgba(255, 255, 255, 0.96);
+border: 1px solid #d9d9d9;
+display: inline-block;
+vertical-align: top;
+width: 44px;
+height: 44px;
+line-height: 42px;
+border-radius: 22px;
+}
+.inkButton .icon {
+stroke: #909090;
+fill: #909090;
+}
+.inkButtonSelected {
+color: #373737;
+}
+.inkButtonSelected .icon {
+stroke: #373737;
+fill: #373737;
+}
+.inkBarTop {
+background: rgba(255, 255, 255, 0.96);
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d9d9d9;
+}
+.inkBarLeft {
+background: rgba(255, 255, 255, 0.96);
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #d9d9d9;
+}
+.inkBarRight {
+background: rgba(255, 255, 255, 0.96);
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #d9d9d9;
+}
+.inkBarBottom {
+background: rgba(255, 255, 255, 0.96);
+border-top-style: solid;
+border-top-width: 1px;
+border-top-color: #d9d9d9;
+}
+.inkGroupTop, .inkGroupBottom, .inkGroupLeft, .inkGroupRight {
+background: rgba(255, 255, 255, 0.96);
+border: 1px solid #d9d9d9;
+}
+.inkGroupTop {
+border-top-style: none;
+border-radius: 0px 0px 2px 2px;
+}
+.inkGroupBottom {
+border-bottom-style: none;
+border-radius: 2px 2px 0px 0px;
+}
+.inkGroupLeft {
+border-left-style: none;
+border-radius: 0px 2px 2px 0px;
+}
+.inkGroupRight {
+border-right-style: none;
+border-radius: 2px 0px 0px 2px;
+}
+.inkBarTop .inkButton, .inkBarBottom .inkButton, .inkBarLeft .inkButton, .inkBarRight .inkButton, .inkGroupTop .inkButton, .inkGroupBottom .inkButton, .inkGroupLeft .inkButton, .inkGroupRight .inkButton {
+background: transparent;
+border: 1px solid transparent;
+border-radius: 0px;
+}
+.inkBarTop .inkButtonSelected, .inkBarBottom .inkButtonSelected, .inkBarLeft .inkButtonSelected, .inkBarRight .inkButtonSelected, .inkGroupTop .inkButtonSelected, .inkGroupBottom .inkButtonSelected, .inkGroupLeft .inkButtonSelected, .inkGroupRight .inkButtonSelected {
+background: #f7f7f7;
+}
+.inkStatus {
+color: #fff;
+background: rgba(55, 55, 55, 0.25);
+padding: 4px;
+border-radius: 2px;
+}
+.inkPopup {
+background: #fff;
+border: 1px solid #d9d9d9;
+border-radius: 2px;
+box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+}
+.inkPopupLock {
+background: rgba(0, 0, 0, 0.1);
+}
+.inkPopupGroup {
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #ebebeb;
+padding: 4px;
+padding-bottom: 0px;
+}
+.inkPopupSwatch {
+text-align: center;
+border: 1px solid #d9d9d9;
+margin-bottom: 4px;
+display: inline-block;
+vertical-align: top;
+position: relative;
+width: 44px;
+height: 44px;
+line-height: 42px;
+border-radius: 22px;
+}
+.inkPopupSwatchSelected {
+border: 2px solid #c0b283;
+margin: -1px;
+margin-bottom: 3px;
+border-radius: 23px;
+}
+.inkPopupSwatchSelected:before {
+border: 2px solid #fff;
+display: block;
+position: absolute;
+top: 0px;
+left: 0px;
+right: 0px;
+bottom: 0px;
+border-radius: 20px;
+content: "";
+}
+.inkPopupButton {
+text-align: center;
+color: #a79344;
+font-size: 14px;
+font-weight: bold;
+padding: 9px 15px;
+cursor: default;
+line-height: 26px;
+}
+.inkPopupButton:hover {
+color: #fff;
+background: #a79344;
+}
+/* scroller */
+.scroller {
+color: #fff;
+cursor: default;
+}
+.scrollerDial {
+background: #a79344;
+padding: 6px;
+z-index: 5;
+box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.25);
+}
+.scrollerDialMsg {
+white-space: nowrap;
+padding: 6px;
+opacity: .5;
+}
+.scrollerLeft .scrollerDialMsg, .scrollerRight .scrollerDialMsg {
+border-top-style: dotted;
+border-top-width: 1px;
+border-top-color: #fff;
+}
+.scrollerTop .scrollerDialMsg, .scrollerBottom .scrollerDialMsg {
+border-left-style: dotted;
+border-left-width: 1px;
+border-left-color: #fff;
+}
+.scrollerDialMsg:first-child {
+border: none;
+}
+.scrollerLeft .scrollerDialMsgMain, .scrollerRight .scrollerDialMsgMain {
+border-top-style: dotted;
+border-top-width: 1px;
+border-top-color: #fff;
+border-bottom-style: dotted;
+border-bottom-width: 1px;
+border-bottom-color: #fff;
+opacity: 1;
+}
+.scrollerTop .scrollerDialMsgMain, .scrollerBottom .scrollerDialMsgMain {
+border-left-style: dotted;
+border-left-width: 1px;
+border-left-color: #fff;
+border-right-style: dotted;
+border-right-width: 1px;
+border-right-color: #fff;
+opacity: 1;
+}
+.scrollerLeft .scrollerSlider, .scrollerRight .scrollerSlider {
+width: 44px;
+}
+.scrollerTop .scrollerSlider, .scrollerBottom .scrollerSlider {
+height: 44px;
+}
+.scrollerSliderInner {
+background: rgba(255, 255, 255, 0.95);
+z-index: 6;
+}
+.scrollerLeft .scrollerSliderInner, .scrollerRight .scrollerSliderInner {
+width: 10px;
+transition: width 100ms;
+-webkit-transition: width 100ms;
+}
+.scrollerTop .scrollerSliderInner, .scrollerBottom .scrollerSliderInner {
+height: 10px;
+transition: height 100ms;
+-webkit-transition: height 100ms;
+}
+.scrollerSliderInner:before {
+border: 2px solid rgba(255, 255, 255, 0.95);
+position: absolute;
+top: -2px;
+left: -2px;
+right: -2px;
+bottom: -2px;
+content: '';
+}
+.scrollerSliderInner:after {
+border: 1px dotted #a79344;
+position: absolute;
+top: -1px;
+left: -1px;
+right: -1px;
+bottom: -1px;
+content: '';
+}
+.scrollerLeft.scrollerActive .scrollerSliderInner, .scrollerRight.scrollerActive .scrollerSliderInner {
+width: 44px;
+}
+.scrollerTop.scrollerActive .scrollerSliderInner, .scrollerBottom.scrollerActive .scrollerSliderInner {
+height: 44px;
+}
+.scrollerSliderHandle, .scrollerSliderShadow {
+background: #a79344;
+border: 1px solid #fff;
+box-sizing: border-box;
+}
+.scrollerLeft .scrollerSliderHandle, .scrollerLeft .scrollerSliderShadow, .scrollerRight .scrollerSliderHandle, .scrollerRight .scrollerSliderShadow {
+width: 100%;
+height: 44px;
+}
+.scrollerTop .scrollerSliderHandle, .scrollerTop .scrollerSliderShadow, .scrollerBottom .scrollerSliderHandle, .scrollerBottom .scrollerSliderShadow {
+width: 44px;
+height: 100%;
+}
+.scrollerSliderShadow {
+background: rgba(167, 147, 68, 0.35);
+}
+.scrollerLeft .scrollerSliderInner {
+left: 0px;
+}
+.scrollerLeft.scrollerDialActive .scrollerSliderInner:before {
+border-right-color: transparent;
+}
+.scrollerLeft.scrollerDialActive .scrollerSliderHandle {
+border-right-color: #a79344;
+}
+.scrollerRight .scrollerSliderInner {
+right: 0px;
+}
+.scrollerRight.scrollerDialActive .scrollerSliderInner:before {
+border-left-color: transparent;
+}
+.scrollerRight.scrollerDialActive .scrollerSliderHandle {
+border-left-color: #a79344;
+}
+.scrollerTop .scrollerSliderInner {
+top: 0px;
+}
+.scrollerTop.scrollerDialActive .scrollerSliderInner:before {
+border-bottom-color: transparent;
+}
+.scrollerTop.scrollerDialActive .scrollerSliderHandle {
+border-bottom-color: #a79344;
+}
+.scrollerBottom .scrollerSliderInner {
+bottom: 0px;
+}
+.scrollerBottom.scrollerDialActive .scrollerSliderInner:before {
+border-top-color: transparent;
+}
+.scrollerBottom.scrollerDialActive .scrollerSliderHandle {
+border-top-color: #a79344;
+}
+.scrollerSliderMsg {
+white-space: nowrap;
+color: #ffffff;
+background: #a79344;
+padding: 6px;
+position: absolute;
+border-radius: 2px;
+box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+}
+.scrollerLeft .scrollerSliderMsg {
+left: 51px;
+}
+.scrollerRight .scrollerSliderMsg {
+right: 51px;
+}
+.scrollerTop .scrollerSliderMsg {
+top: 51px;
+}
+.scrollerBottom .scrollerSliderMsg {
+bottom: 51px;
+}
+.scrollerSliderMsgT {
+top: 0px;
+}
+.scrollerSliderMsgL {
+left: 0px;
+}
+.scrollerSliderMsgR {
+right: 0px;
+}
+.scrollerSliderMsgB {
+bottom: 0px;
+}
+.scrollerSliderMsg:after {
+border: 6px solid transparent;
+display: block;
+position: absolute;
+content: '';
+}
+.scrollerLeft .scrollerSliderMsg:after {
+border-left-style: none;
+border-right-color: #a79344;
+margin-top: -5px;
+top: 50%;
+left: -5px;
+}
+.scrollerRight .scrollerSliderMsg:after {
+border-left-color: #a79344;
+border-right-style: none;
+margin-top: -5px;
+top: 50%;
+right: -5px;
+}
+.scrollerLeft .scrollerSliderMsgT:after, .scrollerRight .scrollerSliderMsgT:after {
+margin-top: 0px;
+top: 5px;
+}
+.scrollerLeft .scrollerSliderMsgB:after, .scrollerRight .scrollerSliderMsgB:after {
+margin-top: 0px;
+top: auto;
+bottom: 7px;
+}
+.scrollerTop .scrollerSliderMsg:after {
+border-top-style: none;
+border-bottom-color: #a79344;
+margin-left: -5px;
+top: -5px;
+left: 50%;
+}
+.scrollerBottom .scrollerSliderMsg:after {
+border-top-color: #a79344;
+border-bottom-style: none;
+margin-left: -5px;
+left: 50%;
+bottom: -5px;
+}
+.scrollerTop .scrollerSliderMsgL:after, .scrollerBottom .scrollerSliderMsgL:after {
+margin-left: 0px;
+left: 7px;
+}
+.scrollerTop .scrollerSliderMsgR:after, .scrollerBottom .scrollerSliderMsgR:after {
+margin-left: 0px;
+left: auto;
+right: 7px;
+}
+.compact .scrollerLeft .scrollerSlider, .compact .scrollerLeft.scrollerActive .scrollerSliderInner, .compact .scrollerRight .scrollerSlider, .compact .scrollerRight.scrollerActive .scrollerSliderInner {
+width: 10px;
+}
+.compact .scrollerTop .scrollerSlider, .compact .scrollerTop.scrollerActive .scrollerSliderInner, .compact .scrollerBottom .scrollerSlider, .compact .scrollerBottom.scrollerActive .scrollerSliderInner {
+height: 10px;
+}
+.compact .scrollerLeft .scrollerSliderMsg {
+left: 17px;
+}
+.compact .scrollerRight .scrollerSliderMsg {
+right: 17px;
+}
+.compact .scrollerTop .scrollerSliderMsg {
+top: 17px;
+}
+.compact .scrollerRight .scrollerSliderMsg {
+bottom: 17px;
+}
+/* tabbed ui */
+.tabbedUIHeader {
+padding: 0px;
+}
+.tabbedUIFooter {
+display: none;
+}
+.tabbedUISep {
+background: #d9d9d9;
+width: 1px !important;
+}
+.tabbedUIMenu {
+background: #fafafa;
+}
+.tabbedUIMenuHeader {
+background: #f2f2f2;
+}
+.tabbedUIMenuCollapsed {
+background: #f2f2f2;
+width: 44px;
+}
+.compact .tabbedUIMenuCollapsed {
+width: 28px;
+}
+/* scroll indicator */
+.scrollIndH, .scrollIndV {
+padding: 0px;
+width: 3px;
+height: 3px;
+}
+.scrollIndHBar, .scrollIndVBar {
+background: rgba(55, 55, 55, 0.5);
+border-radius: 2px;
+}
+.frameText {
+color: #eff1f4;
+}
+.compact .listWider {
+padding: 12px 7px;
+}
+.compact .listDense {
+font-size: 13px;
+padding: 6px 7px;
+}
+.compact .listColHeaderWider {
+background-color: #f4f4f4;
+}
+.compact .listWiderSelected {
+background-color: #fffdf6;
+border-left-style: solid;
+border-left-width: 3px;
+border-left-color: #c0b283;
+padding-left: 4px;
+}
+.compact .listColHeaderItemWider {
+font-weight: bold;
+padding: 12px 10px;
+}
+.compact .listColHeaderWiderHover {
+background-color: #f1f1f1;
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #dadada;
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #dadada;
+padding-left: 9px;
+cursor: pointer;
+transition: background-color .15s ease-in-out;
+}
+.compact .excel {
+color: #2e7d32;
+padding: 4px !important;
+width: 40px;
+height: 40px;
+line-height: 20px;
+border-radius: 50%;
+}
+.compact .excelHover {
+background: rgba(230, 230, 230, 0.6);
+transition: background 0.3s;
+}
+.compact .ddSearch {
+border-bottom-style: none;
+cursor: pointer;
+border-radius: 0.25rem;
+}
+.compact .ddSearchButton {
+background: transparent;
+padding: 3px;
+}
+.compact .ddSearchButton .icon {
+stroke: #373737;
+fill: #373737;
+}
+.compact .ddSearchButtonHover {
+background: transparent;
+}
+.compact .ddSearchButtonHover .icon {
+stroke: #373737;
+fill: #373737;
+}
+.btn {
+text-align: center;
+text-decoration: none;
+color: #212529;
+background-color: transparent;
+font-size: 14px;
+font-weight: bold;
+border: 1px solid transparent;
+padding: 0.375rem 0.75rem;
+display: inline-block;
+vertical-align: middle;
+cursor: pointer;
+border-radius: 0.25rem;
+align-self: center;
+-webkit-user-select: none;
+-moz-user-select: none;
+user-select: none;
+transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn:hover {
+color: #212529;
+}
+.btn:focus {
+box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+outline: 0;
+}
+.btn-primary {
+color: #fff;
+background-color: #c0b283;
+border-color: #c0b283;
+}
+.btn-primary:hover {
+color: #fff;
+background-color: #A7996A;
+border-color: #8D7F50;
+}
+.btn-primary:focus {
+color: #fff;
+background-color: #A7996A;
+border-color: #8D7F50;
+box-shadow: 0 0 0 0.25rem rgba(192, 178, 131, 0.5);
+}
+.btn-primary-disabled {
+color: #fff;
+background-color: #a49d86;
+border-color: #8D7F50;
+cursor: default;
+}
+.btn-primary-disabled:hover {
+background-color: #a49d86;
+}
+.grid-primary {
+font-size: 14px;
+font-weight: normal;
+padding: 4px 10px;
+margin: 4px;
+}
+.simpleHover {
+font-weight: normal;
+}
+.simpleHover:hover {
+color: #8D7F50;
+background-color: transparent;
+transition: 0.3s;
+}
+.simpleHover:active {
+color: #8D7F50;
+background-color: rgba(192, 178, 131, 0.5);
+transition: 0.3s;
+}
+.buttonOutline {
+border-style: solid;
+border-width: 1px;
+border-radius: 0.25rem;
+}
+.buttonOutlineGreen {
+color: #2e7d32;
+font-size: 14px;
+font-weight: normal;
+border-style: solid;
+border-width: 1px;
+padding: 0.375rem 0.75rem;
+line-height: 1.5;
+border-radius: 0.25rem;
+}
+.buttonOutlineGreen:hover {
+background-color: #ecf9ed;
+}
+.buttonOutlineGreen:disabled {
+color: #757575;
+background-color: #f8f8f8;
+}
+.tabbandMainNav {
+background: #fff;
+}
+.tabbandMainNavTab {
+background-color: #f4f4f4;
+}
+.linkStyle {
+color: #373737;
+background-color: transparent;
+font-size: 13px;
+border-bottom-style: solid;
+border-bottom-width: 2px;
+border-bottom-color: #c0b283;
+padding: 0px 2px !important;
+height: 22px;
+border-radius: 0px;
+}
+.linkStyleHover {
+color: #c0b283;
+transition: color 0.3s;
+}
+.linkStyleDisabled {
+color: #cbcbcb;
+border-bottom-color: #cbcbcb;
+}
+.compact .listWider {
+padding: 12px 7px;
+}
+.compact .listColHeaderWider {
+background-color: #f7f9fa;
+}
+.compact .listWiderSelected {
+background-color: #fffdf6;
+border-left-style: solid;
+border-left-width: 3px;
+border-left-color: #c0b283;
+padding-left: 4px;
+}
+.compact .listColHeaderItemWider {
+font-weight: bold;
+padding: 12px 10px;
+}
+.compact .listColHeaderWiderHover {
+background-color: #f1f1f1;
+border-left-style: solid;
+border-left-width: 1px;
+border-left-color: #dadada;
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: #dadada;
+padding-left: 9px;
+cursor: pointer;
+transition: background-color .15s ease-in-out;
+}
+.compact .tabCloseButton {
+background: none;
+border-style: hidden;
+padding: 0px !important;
+margin-top: 2px !important;
+margin-left: 5px !important;
+margin-right: -6px !important;
+width: 24px;
+height: 24px;
+line-height: 12px;
+border-radius: 50%;
+}
+.compact .tabCloseButtonHover {
+background: rgba(195, 195, 195, 0.5);
+padding: 0px !important;
+margin-top: 2px !important;
+margin-left: 5px !important;
+margin-right: -6px !important;
+width: 24px;
+height: 24px;
+line-height: 12px;
+border-radius: 50%;
+transition: 0.5s;
+}
+.gridDetailViewLink {
+text-decoration: underline;
+color: #c0b283;
+background-color: transparent;
+font-size: 14px;
+font-weight: bold;
+border: none;
+padding: 4px;
+display: inline-block;
+vertical-align: middle;
+cursor: pointer;
+border-radius: 0.25rem;
+-webkit-user-select: none;
+-moz-user-select: none;
+user-select: none;
+transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.gridDetailViewLink:hover {
+color: #a79344;
+background-color: rgba(192, 178, 131, 0.1);
+}
+.gridDetailViewLink:focus {
+color: #a79344;
+background-color: rgba(192, 178, 131, 0.15);
+border-color: #8D7F50;
+box-shadow: 0 0 0 0.25rem rgba(192, 178, 131, 0.5);
+outline: none;
+}
+.gridShowHideOverride {
+color: #373737;
+background: #fff;
+background-size: 0% 1px;
+font-size: 14px;
+border: 1px solid #d9d9d9;
+padding: 6px;
+border-radius: 0.25rem;
+}
+.gridShowHideOverride:hover {
+border-color: #d1c7a5;
+}
+.GridDetailViewLabel {
+padding-right: 4px;
+line-height: 28px;
+}
+.checkboxLabel {
+color: #373737;
+margin-top: -4px;
+cursor: pointer;
+}
+.checkboxLabel:hover {
+color: #c0b283;
+transition: 0.3s;
+}
+.styledDropdown {
+background-color: #ffffff;
+font-size: 14px;
+border: 1px solid #d9d9d9;
+padding: 7px;
+cursor: pointer;
+border-radius: 0.25rem;
+}
+.styledDropdown:hover {
+border: 1px solid #c0b283;
+transition: 0.3s;
+}
+.styledDropdown:focus {
+border: 1px solid #8D7F50;
+box-shadow: 0 0 0 0.25rem rgba(192, 178, 131, 0.5);
+outline: none;
+}
+.styledDropdown:disabled {
+color: #373737;
+}
+.inline-link {
+text-decoration: underline;
+color: #a79344;
+cursor: pointer;
+}
+.inline-link:hover {
+color: #C1AD5E;
+}
+.gridRowHover .icon, .gridRowSelected .icon {
+fill: #373737;
+stroke: #373737;
+}
+.alert-warning {
+color: #373737;
+background-color: #fff8ed;
+border-style: solid;
+border-width: 1px;
+border-color: #ffc400;
+padding: 10px 8px !important;
+border-radius: 0.25rem;
+align-items: center !important;
+}
+.alert-warning-text {
+color: #664d03;
+font-size: 14px;
+}
+.alert-info {
+color: #1c4076;
+background-color: #cfe2ff;
+border-style: solid;
+border-width: 1px;
+border-color: #97c0fb;
+padding: 10px 8px !important;
+display: flex !important;
+border-radius: 0.25rem;
+align-items: center !important;
+max-width: 600px;
+}
+.alert-info-text {
+font-size: 14px;
+}
+.alert-danger {
+text-align: center;
+color: #842029;
+background-color: #ffe7e5;
+font-size: 14px;
+border-style: solid;
+border-width: 1px;
+border-color: #f5c2c7;
+padding: 10px 8px !important;
+border-radius: 0.25rem;
+align-items: center !important;
+}
+.compact .toggleButtons {
+color: #373737;
+background-color: #fff;
+font-weight: normal;
+padding: 6px 20px;
+}
+.compact .toggleButtonsTall {
+color: #373737;
+background-color: #fff;
+font-weight: normal;
+padding: 12px 20px;
+}
+.compact .toggleButtonLeft {
+border: 1px solid #b4b4b4;
+border-top-left-radius: 15px;
+border-bottom-left-radius: 15px;
+}
+.compact .toggleButtonLeftTall {
+border: 1px solid #b4b4b4;
+border-top-left-radius: 10px;
+border-bottom-left-radius: 10px;
+}
+.compact .toggleButtonVerticalTop {
+border: 1px solid #b4b4b4;
+border-top-right-radius: 15px;
+border-bottom-right-radius: 15px;
+}
+.compact .toggleButtonMid {
+border: 1px solid #b4b4b4;
+border-left-style: hidden;
+border-right-style: hidden;
+}
+.compact .toggleButtonRight {
+border: 1px solid #b4b4b4;
+border-top-right-radius: 15px;
+border-bottom-right-radius: 15px;
+}
+.compact .toggleButtonRightTall {
+border: 1px solid #b4b4b4;
+border-top-right-radius: 10px;
+border-bottom-right-radius: 10px;
+}
+.compact .toggleButtonPressed {
+color: #896d14;
+background-color: #f9f7ed;
+border-color: #b09f69;
+}
+.compact .toggleButtonHover {
+color: #b09f69;
+}
+.tooltip {
+font-weight: normal;
+display: inline-block;
+position: relative;
+}
+.tooltip .tooltiptext {
+text-align: center;
+color: #fff;
+background-color: #373737;
+padding: 8px;
+visibility: hidden;
+position: absolute;
+top: -8px;
+left: 105%;
+width: 130px;
+z-index: 1;
+border-radius: 6px;
+opacity: 0;
+transition: opacity 0.5s;
+}
+.tooltip .tooltiptext-left {
+text-align: center;
+color: #fff;
+background-color: #373737;
+padding: 8px;
+visibility: hidden;
+position: absolute;
+top: -8px;
+right: 105%;
+width: 130px;
+z-index: 1;
+border-radius: 6px;
+opacity: 0;
+transition: opacity 0.5s;
+}
+.tooltip .tooltiptext-bottom {
+text-align: center;
+color: #fff;
+background-color: #373737;
+padding: 8px;
+margin-left: -73px;
+visibility: hidden;
+position: absolute;
+top: 150%;
+left: 50%;
+width: 130px;
+z-index: 1;
+border-radius: 6px;
+opacity: 0;
+transition: opacity 0.5s;
+}
+.tooltip .tooltiptext-top {
+text-align: center;
+color: #fff;
+background-color: #373737;
+padding: 8px;
+margin-left: -73px;
+visibility: hidden;
+position: absolute;
+left: 50%;
+bottom: 150%;
+width: 130px;
+z-index: 1;
+border-radius: 6px;
+opacity: 0;
+transition: opacity 0.5s;
+}
+.tooltip:hover .tooltiptext {
+visibility: visible;
+opacity: 1;
+}
+.tooltip:hover .tooltiptext-left {
+visibility: visible;
+opacity: 1;
+}
+.tooltip:hover .tooltiptext-bottom {
+visibility: visible;
+opacity: 1;
+}
+.tooltip:hover .tooltiptext-top {
+visibility: visible;
+opacity: 1;
+}
+.tooltip .tooltiptext::after {
+border-style: solid;
+border-width: 5px;
+border-color: transparent #373737 transparent transparent;
+margin-top: -5px;
+position: absolute;
+top: 50%;
+right: 100%;
+content: " ";
+}
+.tooltip .tooltiptext-left::after {
+border-style: solid;
+border-width: 5px;
+border-color: transparent transparent transparent #373737;
+margin-top: -5px;
+position: absolute;
+top: 50%;
+left: 100%;
+content: " ";
+}
+.tooltip .tooltiptext-bottom::after {
+border-style: solid;
+border-width: 5px;
+border-color: transparent transparent #373737 transparent;
+position: absolute;
+left: 50%;
+bottom: 100%;
+content: " ";
+}
+.tooltip .tooltiptext-top::after {
+border-style: solid;
+border-width: 5px;
+border-color: #373737 transparent transparent transparent;
+position: absolute;
+top: 100%;
+left: 50%;
+content: " ";
+}
+.msgbtn-yes {
+color: #fff;
+background-color: #c0b283;
+font-size: 13px !important;
+margin: 6px 10px 6px 0px !important;
+float: right;
+width: 35% !important;
+height: 32px;
+border-radius: 0.25rem !important;
+max-width: 160px;
+}
+.msgbtn-yes:hover {
+background-color: #aa9758;
+transition: 0.3s;
+}
+.msgbtn-no {
+color: #898989;
+background-color: #fff;
+font-size: 13px !important;
+border: 1px solid #e1e1e1 !important;
+margin: 6px 10px 6px 0px !important;
+float: right;
+width: 35% !important;
+height: 32px;
+border-radius: 0.25rem !important;
+max-width: 140px;
+}
+.msgbtn-no:hover {
+background-color: #E6E6E6;
+transition: 0.3s;
+}
+.ddSearch {
+border-bottom-style: none;
+cursor: pointer;
+border-radius: 0.25rem;
+}
+.ddSearchButton {
+background: transparent;
+padding: 3px;
+}
+.ddSearchButton .icon {
+stroke: #373737;
+fill: #373737;
+}
+.ddSearchButtonHover {
+background: transparent;
+}
+.ddSearchButtonHover .icon {
+stroke: #373737;
+fill: #373737;
+}
+.empty {
+background: transparent;
+background-size: 0px;
+border-bottom-style: none;
+padding: 12px;
+}
+.emptyButtonHover {
+color: #373737;
+background: #ececec;
+cursor: pointer;
+border-radius: 50%;
+}
+.emptyButtonHover .icon {
+stroke: #373737;
+fill: #373737;
+}
+.ux-label {
+border: none;
+}
+.floatRight {
+float: right !important;
+}
+.centerElement {
+text-align: center;
+padding: 0px 10px;
+width: 100%;
+}
+.panelNavButtons {
+color: #8e8e8e;
+background-color: #fff;
+font-size: 15px !important;
+padding: 11px 25px !important;
+}
+.panelNavButtonsPressed {
+color: #c0b283;
+background-color: white;
+border-bottom-style: solid;
+border-bottom-width: 3px;
+border-bottom-color: #cob283;
+margin-bottom: -3px;
+}
+.panelNavButtonsHover {
+color: #a79344;
+background-color: #f6f4ec;
+transition-property: background-color, color;
+transition-duration: 0.3s;
+}
+.panelNavButtonsDisabled {
+color: #dddddd;
+}
+.noPadding {
+padding: 0px;
+}
+.buttonClose {
+color: #373737;
+background: transparent;
+font-size: 14px;
+font-weight: bold;
+border: none;
+padding: 0px !important;
+margin: 0px;
+overflow: hidden;
+vertical-align: middle;
+position: relative;
+width: 30px;
+height: 30px;
+line-height: 15px;
+border-radius: 50%;
+box-sizing: border-box;
+outline: none;
+}
+.buttonClose:hover {
+background: rgba(230, 230, 230, 0.5);
+transition: 0.2s;
+}
+.buttonClose.buttonPressed {
+color: #e5dab6;
+background: transparent;
+}
+.closeButtonDarker {
+color: #373737;
+background: none;
+border-style: hidden;
+padding: 0px;
+overflow: hidden;
+vertical-align: middle;
+cursor: pointer;
+position: relative;
+width: 30px;
+height: 30px;
+line-height: 15px;
+border-radius: 50%;
+box-sizing: border-box;
+}
+.closeButtonDarker:hover {
+background: rgba(228, 228, 228, 0.75);
+transition: 0.2s;
+}
+.listColHeaderItemDense {
+font-size: 13px;
+line-height: 8px;
+}
+.repeatingSection {
+background-color: transparent;
+font-size: 13px;
+border-radius: 0px;
+}
+.report-box {
+border: 1px solid #ccc;
+border-radius: 5px;
+box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.report-box-title {
+text-align: center;
+color: #6a6a6a;
+background-color: #f6f6f6;
+font-weight: bold;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d1c7a5;
+padding: 5px;
+line-height: 35px;
+border-radius: 5px 5px 0 0;
+}
+.buttonList {
+color: #c0b283;
+background: transparent;
+font-size: 13px;
+font-weight: bold;
+border: none;
+padding: 5px 7px;
+cursor: pointer;
+line-height: 18px;
+border-radius: 0.25rem;
+transition: all 0.3s;
+}
+.buttonList:hover {
+background-color: rgba(192, 178, 131, 0.1);
+}
+.column {
+padding: 10px;
+float: left;
+width: 50%;
+}
+.runningBalance {
+background-color: #fffdf2;
+border-top-style: solid;
+border-top-width: 2px;
+border-top-color: #fdda66;
+padding: 2px 20px;
+margin-top: -24px;
+}
+.horizontalLine {
+border-bottom-style: solid;
+border-bottom-width: 1px;
+border-bottom-color: #d8dcde;
+padding: 0px;
+width: 100%;
+}
+.buttonTabs {
+border-color: rgba(191, 177, 130, 0.4);
+padding: 8px 10px !important;
+line-height: 18px;
+border-radius: 0px;
+}
+.buttonTabsHover {
+color: #c0b283;
+background-color: #fbfaf6;
+transition: 0.3s;
+}
+.buttonTabsSelected {
+color: #fff;
+background-color: #c0b283;
+}
+.tooltip-attachment {
+font-weight: normal;
+display: inline-block;
+cursor: pointer;
+position: relative;
+}
+.tooltip-attachment .tooltiptext-attachment {
+text-align: center;
+white-space: normal;
+color: #fff;
+background-color: #373737;
+padding: 8px;
+margin-left: 10px;
+visibility: hidden;
+position: absolute;
+top: -5px;
+left: 100%;
+width: 110px;
+z-index: 1;
+border-radius: 6px;
+opacity: 0;
+transition: opacity 0.5s;
+}
+.tooltip-attachment:hover .tooltiptext-attachment {
+visibility: visible;
+opacity: 1;
+}
+.tooltip-attachment .tooltiptext-attachment::after {
+border-style: solid;
+border-width: 5px;
+border-color: transparent #373737 transparent transparent;
+margin-top: -5px;
+position: absolute;
+top: 50%;
+right: 100%;
+content: " ";
+}
+.tooltip-BPdetail-currappr {
+font-weight: normal;
+display: inline-block;
+cursor: pointer;
+position: relative;
+}
+.tooltip-BPdetail-currappr .tooltiptext-BPdetail-currappr {
+text-align: center;
+white-space: normal;
+color: #fff;
+background-color: #373737;
+padding: 8px;
+margin-left: 10px;
+visibility: hidden;
+position: absolute;
+top: -17px;
+left: 100%;
+width: 150px;
+z-index: 1;
+border-radius: 6px;
+opacity: 0;
+transition: opacity 0.5s;
+}
+.tooltip-BPdetail-currappr:hover .tooltiptext-BPdetail-currappr {
+visibility: visible;
+opacity: 1;
+}
+.tooltip-BPdetail-currappr .tooltiptext-BPdetail-currappr::after {
+border-style: solid;
+border-width: 5px;
+border-color: transparent #373737 transparent transparent;
+margin-top: -5px;
+position: absolute;
+top: 50%;
+right: 100%;
+content: " ";
+}
+.receipt-tag-closed {
+text-transform: uppercase;
+color: #ffb559;
+background-color: #fffbe9;
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #ffdaad;
+padding: 2px 3px;
+margin: 0px 2px;
+float: right;
+border-radius: 4px;
+}
+.receipt-tag-cancelled {
+text-transform: uppercase;
+color: #ff5959;
+background-color: #ffe9e9;
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #fbcfcf;
+padding: 2px 3px;
+margin: 0px 2px;
+float: right;
+border-radius: 4px;
+}
+.receipt-tag-rollover {
+text-transform: uppercase;
+color: #797979;
+background-color: #f4f4f4;
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #e7e7e7;
+padding: 2px 3px;
+margin: 0px 2px;
+float: right;
+border-radius: 4px;
+}
+.receipt-tag-open {
+text-transform: uppercase;
+color: #1f7b51;
+background-color: #e7fbed;
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #a8e6bb;
+padding: 2px 3px;
+margin: 0px 2px;
+float: right;
+border-radius: 4px;
+}
+.tag-orange {
+text-transform: uppercase;
+color: #ffb559;
+background-color: #fffbe9;
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #ffdaad;
+padding: 2px 3px;
+margin: 0px 2px;
+float: left;
+border-radius: 4px;
+}
+.tag-red {
+text-transform: uppercase;
+color: #ff5959;
+background-color: #ffe9e9;
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #fbcfcf;
+padding: 2px 3px;
+margin: 0px 2px;
+float: left;
+border-radius: 4px;
+}
+.tag-grey {
+text-transform: uppercase;
+color: #797979;
+background-color: #f4f4f4;
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #e7e7e7;
+padding: 2px 3px;
+margin: 0px 2px;
+float: left;
+border-radius: 4px;
+}
+.tag-green {
+text-transform: uppercase;
+color: #1f7b51;
+background-color: #e7fbed;
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #a8e6bb;
+padding: 2px 3px;
+margin: 0px 2px;
+float: left;
+border-radius: 4px;
+}
+.tag-blue {
+text-transform: uppercase;
+color: #0079ad;
+background-color: #f7fbfe;
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+border-color: #b7e0ff;
+padding: 2px 3px;
+margin: 0 2px;
+float: left;
+border-radius: 4px;
+}
+.tag {
+font-size: 12px;
+font-weight: bold;
+border-style: solid;
+border-width: 1px;
+padding: 2px 3px;
+margin: 0px 2px;
+border-radius: 4px;
+}
+.orange-tag {
+color: #cd7b15;
+background-color: #fffbe9;
+border-color: #ffb559;
+}
+.red-tag {
+color: #d91818;
+background-color: #ffecec;
+border-color: #fbcfcf;
+}
+.grey-tag {
+color: #6e6e6e;
+background-color: #f4f4f4;
+border-color: #e7e7e7;
+}
+.green-tag {
+color: #1f7b51;
+background-color: #e7fbed;
+border-color: #a8e6bb;
+}
+.blue-tag {
+color: #0079ad;
+background-color: #f7fbfe;
+border-color: #b7e0ff;
+}
+.purple-tag {
+color: #7159c9;
+background-color: #ecedfd;
+border-color: #c3c5e5;
+}
+.secondLeveltab {
+padding: 9px 30px;
+margin-bottom: 0px;
+}
+.secondLeveltabSelected {
+padding: 9px 30px 6px 30px;
+}
+.buttonTabsAlt {
+color: #8e8e8e;
+background-color: transparent;
+font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+font-size: 14px;
+font-weight: bold;
+border: none;
+padding: 12px 30px;
+display: inline-block;
+cursor: pointer;
+line-height: 26px;
+}
+.buttonTabsAltSelected {
+color: #c0b283;
+background-color: white;
+border-bottom-style: solid;
+border-bottom-width: 3px;
+border-bottom-color: #c0b283;
+padding: 12px 30px 9px 30px;
+}
+.buttonTabsAltHover {
+color: #a79344;
+background-color: #f6f4ec;
+transition: background-color 600ms;
+}
+.buttonTabsAltDisabled {
+color: #cbcbcb;
+cursor: default;
+}
+.buttonTabsAlt:disabled {
+color: #cbcbcb;
+cursor: default;
+}
+.selectedBolder {
+background-color: #fffdf6 !important;
+border: 1px solid #f4d87b !important;
+padding: 6px 6px 4px 6px !important;
+margin-bottom: 1px;
+}
+.secondtier-griddata {
+color: #727272;
+font-size: 13px;
+}
+.selectedBlue {
+background-color: #f1f6ff !important;
+border-left-style: solid;
+border-left-width: 3px;
+border-left-color: #77c4ff !important;
+padding-left: 4px;
+}
+.hoverBlue {
+background-color: #fafbff !important;
+}
