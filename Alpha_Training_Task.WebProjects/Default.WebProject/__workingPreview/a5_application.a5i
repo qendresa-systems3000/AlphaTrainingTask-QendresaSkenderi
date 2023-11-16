@@ -138,7 +138,7 @@ DIM jsLibraries.jQueryUI as C = "Load Internal Version"
 DIM jsLibraries.links as C
 DIM jsLibraries.vuejs as C = "None"
 DIM jsLibraries.includeImageGallery as L
-DIM jsLibraries.includeGoogleJSAPI as L
+DIM jsLibraries.includeGoogleJSAPI as L = .T.
 DIM jsLibraries.includejitsimeet as L
 DIM jsLibraries.includeCKEdit as L
 DIM jsLibraries.jQueryCoreVersion as C = "1.6.2"
@@ -291,7 +291,7 @@ DIM css.webkit.AllowSelectionOfText as L
 DIM stripe as P
 DIM stripe.keysJSON as C
 DIM siteDefaults as P
-DIM siteDefaults.guessedDefaultPage as L
+DIM siteDefaults.guessedDefaultPage as L = .T.
 DIM siteDefaults.defaultpage as C = "index.a5w"
 DIM siteDefaults.useExternalRedirect as L
 DIM siteDefaults.maxUploadSizeMB as N = 100
@@ -311,6 +311,11 @@ DIM siteDefaults.http01ChallengeOptions.enabled as L
 DIM siteDefaults.http01ChallengeOptions.challengeVendor as C = "LetsEncrypt"
 DIM siteDefaults.http01ChallengeOptions.wellknownPath as C = ".well-known\acme-challenge"
 DIM siteDefaults.defaultExtensions as C
+DIM siteDefaults.sessionTimeout as N = 15
+DIM siteDefaults.sessionCookieName as C = "XBasic_SessionId"
+DIM siteDefaults.authenticationCookieName as C = ".ASPXFORMSAUTH"
+DIM siteDefaults.extendAuthenticationCookieOnEachRequest as L
+DIM siteDefaults.executionTimeout as N
 DIM aggressive_cleanup as L
 DIM federatedAuthentication as P
 DIM federatedAuthentication.tableType as C = "SQL"
@@ -320,7 +325,8 @@ DIM federatedAuthentication.fieldmap as C
 DIM responseHeaders as P
 DIM responseHeaders.includeInsecureHeaders as L
 DIM responseHeaders.additionalHeaders as C
-DIM __token as C = "994f21da83724325b2c54f335a37fbd3"
+DIM pdfReferenceDevice as C
+DIM __token as C = "97f2d2c703cf44f597417c49983dc0ac"
 %txt%
 
 dim gv as p 
@@ -331,10 +337,10 @@ dim gv.__buildNumberExe__ as n
 dim gv.__buildNumberAddins__ as n 
 dim gv.__guid as c 
 dim gv.__A5PublishVersion as n 
-gv.__A5PublishTimestamp = 2023404015164024471
+gv.__A5PublishTimestamp = 2023585816165836259
 gv.__buildNumberExe__ = 8844
 gv.__buildNumberAddins__ = 5687
-gv.__guid = "f1dabb50-e587-4f4f-9c21-600bc05c79d4"
+gv.__guid = "b65ccbec-4a42-4654-a516-d78bf9862763"
 gv.__control = <<%txtcontrol%
 hV7+2zUTjP0=
 %txtcontrol%
